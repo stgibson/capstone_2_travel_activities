@@ -33,7 +33,7 @@ activities. The country model will include a list of cities. The activity model
 will include its name, a short description, its rating, a list of images, its
 booking link, its price, and the city it's located in. The travel plan model
 will include its name, a list of days, and the user who created the plan. The
-day model will include a its number and a list of activities.
+day model will include its number and a list of activities.
 
 ### Potential Issues
 
