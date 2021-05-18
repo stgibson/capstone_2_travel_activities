@@ -28,12 +28,13 @@ coordinates from a provided city.
 The database for the website will have models for users, cities, countries,
 activities, travel plans, and days. The user model will include their username,
 encrypted password, a list of the user's favorite activities, and a list of
-the user's travel plans. The city model will include its country and a list of
-activities. The country model will include a list of cities. The activity model
-will include its name, a short description, its rating, a list of images, its
-booking link, its price, and the city it's located in. The travel plan model
+the user's travel plans. The city model will include its name, its country, and
+a list of activities. The country model will include its name and a list of
+cities. The activity model will include its name, a short description, its
+rating, its booking link, its price, its currency code, the city it's located
+in, and a list of the days of travel plans it is used. The travel plan model
 will include its name, a list of days, and the user who created the plan. The
-day model will include its number and a list of activities.
+day model will include its number, its travel plan, and a list of activities.
 
 ### Potential Issues
 
@@ -113,3 +114,6 @@ The following is a list of backlog features for future versions of the project:
 * Allow users to edit the number of days in a travel plan or to edit the name
 of the travel plan
 * Allow users to change the user's username or password
+* Determine and display cost of travel plans
+* Make it so that the order of activities in each day of a travel plan are
+stored
