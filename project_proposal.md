@@ -117,3 +117,4 @@ of the travel plan
 * Determine and display cost of travel plans
 * Make it so that the order of activities in each day of a travel plan are
 stored
+* Avoid duplicating activities for cities nearby
