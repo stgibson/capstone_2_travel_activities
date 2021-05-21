@@ -72,7 +72,6 @@ activities to a day in their travel plan
 * Logged in users can remove a travel activity from a day in their travel plan
 * Logged in users can view a list of their travel plans, and view each one in
 detail
-* Logged in users can delete their accounts
 
 ### User Flow
 
@@ -114,6 +113,7 @@ The following is a list of backlog features for future versions of the project:
 * Allow users to edit the number of days in a travel plan or to edit the name
 of the travel plan
 * Allow users to change the user's username or password
+* Logged in users can delete their accounts
 * Determine and display cost of travel plans
 * Make it so that the order of activities in each day of a travel plan are
 stored
