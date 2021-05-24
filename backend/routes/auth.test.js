@@ -1,10 +1,7 @@
 const request = require("supertest");
 const jwt = require("jsonwebtoken");
 const app = require("../app");
-const {
-  sequelize,
-  User
-} = require("../models");
+const { sequelize } = require("../models");
 
 beforeEach(async () => {
   await sequelize.sync({ force: true });
