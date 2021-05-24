@@ -27,8 +27,7 @@ else {
 
 // set up user model
 const User = sequelize.define("user", {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  username: { type: DataTypes.STRING(30), allowNull: false, unique: true },
+  username: { type: DataTypes.STRING(30), primaryKey: true, },
   password: { type: DataTypes.TEXT, allowNull: false }
 }, {
   tableName: "users"
@@ -99,12 +98,10 @@ Activity.belongsTo(City);
 
 // set up relationship between users and travel plans
 User.hasMany(TravelPlan, {
-  foreignKey: {
-    allowNull: false
-  },
+  foreignKey: "username",
   onDelete: "CASCADE"
 });
-TravelPlan.belongsTo(User);
+TravelPlan.belongsTo(User, { foreignKey: "username" });
 
 // set up relationship between travel plans and days
 TravelPlan.hasMany(Day, {
@@ -118,12 +115,12 @@ Day.belongsTo(TravelPlan);
 // set up relationship between users and activities
 const UserActivity = sequelize.define("userActivity", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  userId: {
-    type: DataTypes.INTEGER,
+  username: {
+    type: DataTypes.STRING(30),
     allowNull: false,
     references: {
       model: User,
-      key: "id"
+      key: "username"
     }
   },
   activityId: {
@@ -137,8 +134,16 @@ const UserActivity = sequelize.define("userActivity", {
 }, {
   tableName: "users_activities"
 });
-User.belongsToMany(Activity, { through: UserActivity });
-Activity.belongsToMany(User, { through: UserActivity });
+User.belongsToMany(Activity, {
+  through: UserActivity,
+  foreignKey: "username",
+  otherKey: "activityId"
+});
+Activity.belongsToMany(User, {
+  through: UserActivity,
+  foreignKey: "activityId",
+  otherKey: "username"
+});
 
 // set up relationship between days and activities
 const DayActivity = sequelize.define("dayActivity", {

@@ -10,12 +10,8 @@ const {
   DayActivity
 } = require("./models");
 
-async function initDb() {
-  await sequelize.sync({ force: true });
-}
-
 beforeEach(async () => {
-  await initDb();
+  await sequelize.sync({ force: true });
 });
 
 afterAll(async () => {
@@ -26,7 +22,6 @@ describe("User", () => {
   it("creates user with valid input", async () => {
     const user = await User.create({ username: "test", password: "password" });
 
-    expect(user.id).not.toBeNull();
     expect(user.username).toEqual("test");
     expect(user.password).toEqual("password");
   });
@@ -96,7 +91,7 @@ describe("TravelPlans", () => {
     let user = await User.create({ username: "test", password: "password" });
     const travelPlan = await TravelPlan.create({
       name: "Test Travel Plan",
-      userId: user.id
+      username: user.username
     });
     
     expect(travelPlan.id).not.toBeNull();
@@ -117,7 +112,7 @@ describe("Day", () => {
     const user = await User.create({ username: "test", password: "password" });
     let travelPlan = await TravelPlan.create({
       name: "Test Travel Plan",
-      userId: user.id
+      username: user.username
     });
     const day = await Day.create({ number: 1, travelPlanId: travelPlan.id });
 
@@ -147,7 +142,7 @@ describe("UserActivity", () => {
       currencyCode: "EUR",
       cityId: city.id
     });
-    await UserActivity.create({ userId: user.id, activityId: activity.id });
+    await UserActivity.create({ username: user.username, activityId: activity.id });
     const activities = await user.getActivities();
     const users = await activity.getUsers();
 
@@ -163,7 +158,7 @@ describe("DayActivity", () => {
     const user = await User.create({ username: "test", password: "password" });
     let travelPlan = await TravelPlan.create({
       name: "Test Travel Plan",
-      userId: user.id
+      username: user.username
     });
     const day = await Day.create({ number: 1, travelPlanId: travelPlan.id });
     const country = await Country.create({ name: "France" });
