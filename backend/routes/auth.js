@@ -32,7 +32,7 @@ router.post("/register", async (req, res, next) => {
       password: hashedPassword
     });
     const token =
-      jwt.sign({ username: newUser.username, }, process.env.SECRET);
+      jwt.sign({ username: newUser.username, }, process.env.JWT_SECRET);
     res.status(201);
     return res.json({ token });
   }
@@ -68,7 +68,7 @@ router.post("/register", async (req, res, next) => {
       throw new Error("Invalid credentials");
     }
     const token =
-      jwt.sign({ username: user.username, }, process.env.SECRET);
+      jwt.sign({ username: user.username, }, process.env.JWT_SECRET);
     return res.json({ token });
   }
   catch (err) {
