@@ -13,7 +13,7 @@ afterAll(async () => {
   await sequelize.close();
 });
 
-describe("/auth/register", () => {
+describe("POST /auth/register", () => {
   it("can register", async () => {
     const data = { username: "test2", password: "password" };
     const res = await request(app).post("/auth/register").send(data);
@@ -34,7 +34,7 @@ describe("/auth/register", () => {
   });
 });
 
-describe("/auth/login", () => {
+describe("POST /auth/login", () => {
   it("can login", async () => {
     const data = { username: "test1", password: "password" };
     const res = await request(app).post("/auth/login").send(data);

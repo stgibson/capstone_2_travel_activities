@@ -63,8 +63,6 @@ router.post("/register", async (req, res, next) => {
     const user = await User.findByPk(username);
     // validate username and password
     if (!user || !(await bcrypt.compare(password, user.password))) {
-      console.log(`user: ${user.username}, ${user.password}`);
-      console.log("throwing error");
       throw new Error("Invalid credentials");
     }
     const token =
