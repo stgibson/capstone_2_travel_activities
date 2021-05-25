@@ -1,9 +1,9 @@
 require("dotenv").config();
 const express = require("express");
+const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const jsonSchema = require("jsonschema");
-const router = express.Router();
 const ExpressError = require("../expressError");
 const { User } = require("../models");
 const authSchema = require("../schemas/auth.json");
