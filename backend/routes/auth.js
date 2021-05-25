@@ -11,7 +11,8 @@ const authSchema = require("../schemas/auth.json");
 /**
  * Creates new user provided username and password are provided and username is
  * not taken, otherwise 400 error
- * POST /auth/register: { username, password } => { token }
+ * POST /auth/register
+ * { username, password } => { token }
  */
 router.post("/register", async (req, res, next) => {
   const { valid, errors } = jsonSchema.validate(req.body, authSchema);
@@ -45,7 +46,8 @@ router.post("/register", async (req, res, next) => {
 /**
  * Given username and password, and if they are valid, send token, otherwise
  * 400 error
- * POST /auth/login: { username, password } => { token }
+ * POST /auth/login
+ * { username, password } => { token }
  */
  router.post("/login", async (req, res, next) => {
   const { valid, errors } = jsonSchema.validate(req.body, authSchema);
