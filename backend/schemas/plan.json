@@ -1,19 +1,18 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "http://example.com/example.json",
-  "type": "object",
   "required": [
-    "username",
-    "password"
+    "name",
+    "numOfDays"
   ],
   "properties": {
-    "username": {
-      "$id": "#/properties/username",
+    "name": {
+      "$id": "#/properties/name",
       "type": "string"
     },
-    "password": {
-      "$id": "#/properties/password",
-      "type": "string"
+    "numOfDays": {
+      "$id": "#/properties/numOfDays",
+      "type": "integer"
     }
   },
   "additionalProperties": false

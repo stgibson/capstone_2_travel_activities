@@ -3,18 +3,18 @@
   "$id": "http://example.com/example.json",
   "type": "object",
   "required": [
-      "city",
-      "country"
+    "city",
+    "country"
   ],
   "properties": {
-      "city": {
-          "$id": "#/properties/city",
-          "type": "string"
-      },
-      "country": {
-          "$id": "#/properties/country",
-          "type": "string"
-      }
+    "city": {
+      "$id": "#/properties/city",
+      "type": "string"
+    },
+    "country": {
+      "$id": "#/properties/country",
+      "type": "string"
+    }
   },
   "additionalProperties": false
 }
