@@ -77,7 +77,15 @@ router.get("/", async (req, res, next) => {
  * Gets details on an activity by id.
  * GET /activities/:id
  * {} => {
- *  activity: [id, name, description, rating, bookingLink, price, currencyCode]
+ *   activity: {
+ *     id,
+ *     name,
+ *     description,
+ *     rating,
+ *     bookingLink,
+ *     price,
+ *     currencyCode
+ *   }
  * }
  */
  router.get("/:id", async (req, res, next) => {
@@ -119,7 +127,7 @@ router.put("/:id/like", async (req, res, next) => {
 /**
  * Gets all activities currently logged in user likes.
  * GET /activities/like/all
- * {} => { activities: [id, name] }
+ * {} => { activities: [{ id, name }, ...] }
  */
 router.get("/like/all", async (req, res, next) => {
   try {
