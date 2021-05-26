@@ -118,3 +118,4 @@ of the travel plan
 * Make it so that the order of activities in each day of a travel plan are
 stored
 * Avoid duplicating activities for cities nearby
+* Create admin users
