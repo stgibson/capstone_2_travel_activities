@@ -4,7 +4,7 @@ const {
   City,
   Country,
   Activity,
-  TravelPlan,
+  Plan,
   Day,
   UserActivity,
   DayActivity
@@ -86,43 +86,43 @@ describe("Activity", () => {
   });
 });
 
-describe("TravelPlans", () => {
-  it("creates travel plan with valid input", async () => {
+describe("Plans", () => {
+  it("creates plan with valid input", async () => {
     let user = await User.create({ username: "test", password: "password" });
-    const travelPlan = await TravelPlan.create({
-      name: "Test Travel Plan",
+    const plan = await Plan.create({
+      name: "Test Plan",
       username: user.username
     });
     
-    expect(travelPlan.id).not.toBeNull();
-    expect(travelPlan.name).toEqual("Test Travel Plan");
+    expect(plan.id).not.toBeNull();
+    expect(plan.name).toEqual("Test Plan");
 
     // check relationship
-    user = await travelPlan.getUser();
-    const travelPlans = await user.getTravelPlans();
+    user = await plan.getUser();
+    const plans = await user.getPlans();
 
     expect(user.username).toEqual("test");
-    expect(travelPlans.length).toEqual(1);
-    expect(travelPlans[0].name).toEqual("Test Travel Plan");
+    expect(plans.length).toEqual(1);
+    expect(plans[0].name).toEqual("Test Plan");
   });
 });
 
 describe("Day", () => {
   it("creates day with valid input", async () => {
     const user = await User.create({ username: "test", password: "password" });
-    let travelPlan = await TravelPlan.create({
-      name: "Test Travel Plan",
+    let plan = await Plan.create({
+      name: "Test Plan",
       username: user.username
     });
-    const day = await Day.create({ number: 1, travelPlanId: travelPlan.id });
+    const day = await Day.create({ number: 1, planId: plan.id });
 
     expect(day.id).not.toBeNull();
     expect(day.number).toEqual(1);
     
-    travelPlan = await day.getTravelPlan();
-    const days = await travelPlan.getDays();
+    plan = await day.getPlan();
+    const days = await plan.getDays();
 
-    expect(travelPlan.name).toEqual("Test Travel Plan");
+    expect(plan.name).toEqual("Test Plan");
     expect(days.length).toEqual(1);
     expect(days[0].number).toEqual(1);
   });
@@ -156,11 +156,11 @@ describe("UserActivity", () => {
 describe("DayActivity", () => {
   it("creates association between a day and an activity", async () => {
     const user = await User.create({ username: "test", password: "password" });
-    let travelPlan = await TravelPlan.create({
-      name: "Test Travel Plan",
+    let plan = await Plan.create({
+      name: "Test Plan",
       username: user.username
     });
-    const day = await Day.create({ number: 1, travelPlanId: travelPlan.id });
+    const day = await Day.create({ number: 1, planId: plan.id });
     const country = await Country.create({ name: "France" });
     const city = await City.create({ name: "Paris", countryId: country.id });
     const activity = await Activity.create({

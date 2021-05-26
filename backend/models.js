@@ -63,11 +63,11 @@ const Activity = sequelize.define("activity", {
 });
 
 // set up travel plan model
-const TravelPlan = sequelize.define("travelPlan", {
+const Plan = sequelize.define("plan", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.TEXT, allowNull: false },
 }, {
-  tableName: "travel_plans"
+  tableName: "plans"
 });
 
 // set up day model
@@ -96,21 +96,21 @@ City.hasMany(Activity, {
 });
 Activity.belongsTo(City);
 
-// set up relationship between users and travel plans
-User.hasMany(TravelPlan, {
+// set up relationship between users and plans
+User.hasMany(Plan, {
   foreignKey: "username",
   onDelete: "CASCADE"
 });
-TravelPlan.belongsTo(User, { foreignKey: "username" });
+Plan.belongsTo(User, { foreignKey: "username" });
 
-// set up relationship between travel plans and days
-TravelPlan.hasMany(Day, {
+// set up relationship between plans and days
+Plan.hasMany(Day, {
   foreignKey: {
     allowNull: false
   },
   onDelete: "CASCADE"
 });
-Day.belongsTo(TravelPlan);
+Day.belongsTo(Plan);
 
 // set up relationship between users and activities
 const UserActivity = sequelize.define("userActivity", {
@@ -176,7 +176,7 @@ module.exports = {
   City,
   Country,
   Activity,
-  TravelPlan,
+  Plan,
   Day,
   UserActivity,
   DayActivity
