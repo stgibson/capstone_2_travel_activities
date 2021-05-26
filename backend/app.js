@@ -2,7 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const { sequelize } = require("./models");
 const ExpressError = require("./expressError");
+const { authenticateJWT, ensureLoggedIn } = require("./middleware/auth");
 const authRoutes = require("./routes/auth");
+const activitiesRoutes = require("./routes/activities");
 
 if (process.env.NODE_ENV !== "test") {
   sequelize.sync();
@@ -14,8 +16,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// use routes
+// routes and auth middleware
+app.use(authenticateJWT);
 app.use("/auth", authRoutes);
+app.use(ensureLoggedIn);
+app.use("/activities", activitiesRoutes);
 
 // not found error
 app.use((req, res, next) => {
