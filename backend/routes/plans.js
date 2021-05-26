@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const jsonSchema = require("jsonschema");
 const ExpressError = require("../expressError");
-const { User, Activity, Plan, Day } = require("../models");
+const { Plan, Day } = require("../models");
 const planSchema = require("../schemas/plan.json");
 
 /**
