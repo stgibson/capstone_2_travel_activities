@@ -25,16 +25,17 @@ coordinates from a provided city.
 
 ### Database Schema
 
+01234567890123456789012345678901234567890123456789012345678901234567890123456789
 The database for the website will have models for users, cities, countries,
-activities, travel plans, and days. The user model will include their username,
-encrypted password, a list of the user's favorite activities, and a list of
-the user's travel plans. The city model will include its name, its country, and
-a list of activities. The country model will include its name and a list of
-cities. The activity model will include its name, a short description, its
-rating, its booking link, its price, its currency code, the city it's located
-in, and a list of the days of travel plans it is used. The travel plan model
-will include its name, a list of days, and the user who created the plan. The
-day model will include its number, its travel plan, and a list of activities.
+activities, plans, and days. The user model will include their username,
+encrypted password, a list of the user's favorite activities, and a list of the
+user's plans. The city model will include its name, its country, and a list of
+activities. The country model will include its name and a list of cities. The
+activity model will include its name, a short description, its rating, its
+booking link, its price, its currency code, the city it's located in, and a list
+of the days of plans it is used. The plan model will include its name, a list of
+days, and the user who created the plan. The day model will include its number,
+its plan, and a list of activities.
 
 ### Potential Issues
 
