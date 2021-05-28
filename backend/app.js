@@ -9,7 +9,7 @@ const plansRoutes = require("./routes/plans");
 const daysRoutes = require("./routes/days");
 
 if (process.env.NODE_ENV !== "test") {
-  sequelize.sync();
+  sequelize.sync({ force: true });
 }
 
 const app = express();
