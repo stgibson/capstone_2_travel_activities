@@ -58,7 +58,7 @@ router.get("/", async (req, res, next) => {
 /**
  * Gets plan with all days currently logged in user has created
  * GET /plans/:id
- * {} => { plan: { id, name, days: [id, number] } }
+ * {} => { plan: { id, name, days: [{ id, number }, ...] } }
  */
 router.get("/:id", async (req, res, next) => {
   try {
