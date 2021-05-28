@@ -27,7 +27,7 @@ else {
 
 // set up user model
 const User = sequelize.define("user", {
-  username: { type: DataTypes.STRING(30), primaryKey: true, },
+  username: { type: DataTypes.STRING(30), primaryKey: true },
   password: { type: DataTypes.TEXT, allowNull: false }
 }, {
   tableName: "users"
