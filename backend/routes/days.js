@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const router = express.Router();
-const jsonSchema = require("jsonschema");
 const ExpressError = require("../expressError");
 const { Activity, Plan, Day, DayActivity } = require("../models");
 
