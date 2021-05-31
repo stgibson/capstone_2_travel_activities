@@ -77,7 +77,7 @@ describe("travel plans action creators", () => {
       }
     });
 
-    const store = mockStore({ plans: {} });
+    const store = mockStore({});
 
     return store.dispatch(getPlansFromAPI(token)).then(() => {
       const actions = store.getActions();
@@ -110,7 +110,7 @@ describe("travel plans action creators", () => {
       }
     });
 
-    const store = mockStore({ plans: {} });
+    const store = mockStore({});
 
     const data = { name: "New Test Plan", numOfDays: 2 };
     return store.dispatch(addPlanToAPI(data, token)).then(() => {
@@ -139,7 +139,7 @@ describe("travel plans action creators", () => {
       }
     });
 
-    const store = mockStore({ plans: {} });
+    const store = mockStore({});
 
     return store.dispatch(addActivityToDayInAPI(1, 1, 1, token)).then(() => {
       const actions = store.getActions();
@@ -167,7 +167,7 @@ describe("travel plans action creators", () => {
       }
     });
 
-    const store = mockStore({ plans: {} });
+    const store = mockStore({});
 
     return store.dispatch(removeActivityFromDayInAPI(1, 1, 1, token)).then(() => {
       const actions = store.getActions();

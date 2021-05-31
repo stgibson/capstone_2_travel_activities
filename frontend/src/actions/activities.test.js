@@ -30,7 +30,7 @@ describe("favorite activities action creators", () => {
     const res = { data: { activities } };
     axios.get.mockResolvedValue(res);
 
-    const store = mockStore({ activities: {} });
+    const store = mockStore({});
 
     return store.dispatch(getFavoriteActivitiesFromAPI(token)).then(() => {
       const actions = store.getActions();
@@ -54,7 +54,7 @@ describe("favorite activities action creators", () => {
     const res = { data: { activity } };
     axios.get.mockResolvedValue(res);
 
-    const store = mockStore({ activities: {} });
+    const store = mockStore({});
 
     return store.dispatch(addFavoriteActivityToAPI(activity.id, token))
       .then(() => {
@@ -66,7 +66,7 @@ describe("favorite activities action creators", () => {
 
   it("can create activity to remove favorite activity from store",
     async () => {
-    const store = mockStore({ activities: {} });
+    const store = mockStore({});
 
     return store.dispatch(removeFavoriteActivityFromAPI(1, token)).then(() => {
       const actions = store.getActions();
