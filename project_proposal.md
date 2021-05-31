@@ -25,7 +25,6 @@ coordinates from a provided city.
 
 ### Database Schema
 
-01234567890123456789012345678901234567890123456789012345678901234567890123456789
 The database for the website will have models for users, cities, countries,
 activities, plans, and days. The user model will include their username,
 encrypted password, a list of the user's favorite activities, and a list of the
