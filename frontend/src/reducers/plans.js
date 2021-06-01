@@ -57,7 +57,7 @@ const plans = (state=INIT_STATE, action) => {
         }
       };
     case RESET_ALL:
-      return INIT_STATE;
+      return { ...INIT_STATE };
     default:
       return state;
   }

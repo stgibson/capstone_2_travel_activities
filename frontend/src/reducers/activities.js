@@ -26,7 +26,7 @@ const activities = (state=INIT_STATE, action) => {
     case REMOVE_FAVORITE_ACTIVITY:
       return { ...state, [action.id]: undefined };
     case RESET_ALL:
-      return INIT_STATE;
+      return { ...INIT_STATE };
     default:
       return state;
   }
