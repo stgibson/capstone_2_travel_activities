@@ -135,7 +135,9 @@ router.get("/like/all", async (req, res, next) => {
     const userAndActivities =
       await User.findOne({ where: { username }, include: Activity });
     const activities = userAndActivities.activities;
-    return res.json({ activities });
+    const activitiesSimple = activities
+      .map(activity => ({ id: activity.id, name: activity.name }));
+    return res.json({ activities: activitiesSimple });
   }
   catch (err) {
     return next(err);
