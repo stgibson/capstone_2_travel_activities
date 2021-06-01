@@ -7,6 +7,12 @@ import {
 
 const INIT_STATE = {};
 
+/**
+ * Manages activities object in redux store
+ * @param {Object} state 
+ * @param {Object} action 
+ * @returns new state for activities based on action
+ */
 const activities = (state=INIT_STATE, action) => {
   switch (action.type) {
     case LOAD_FAVORITE_ACTIVITIES:

@@ -8,6 +8,12 @@ import {
 
 const INIT_STATE = {};
 
+/**
+ * Manages plans object in redux store
+ * @param {Object} state 
+ * @param {Object} action 
+ * @returns new state for plans based on action
+ */
 const plans = (state=INIT_STATE, action) => {
   let plan;
   let day;

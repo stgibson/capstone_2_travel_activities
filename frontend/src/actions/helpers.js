@@ -4,10 +4,12 @@ import axios from "axios";
 dotenv.config();
 
 /**
- * 
+ * Gets days in plan with provided id, where days and activities in days are
+ * formatted for redux store, with days being object with keys day numbers and
+ * values an object containing its activities
  * @param {*} id 
  * @param {*} token 
- * @returns 
+ * @returns days
  */
 const getDaysInPlanFromAPI = async (id, token) => {
   const res = await axios.get(`${process.env.API_BASE_URL}/plans/${id}`, {

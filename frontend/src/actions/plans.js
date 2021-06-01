@@ -94,10 +94,26 @@ const addPlanToAPI = (plan, token) => {
   };
 };
 
+/**
+ * Creates action to add activity to a day in redux store
+ * @param {number} planId
+ * @param {number} dayNumber
+ * @param {Object{number|string}} activity
+ * @returns action
+ */
 const addActivityToDay = (planId, dayNumber, activity) => {
   return { type: ADD_ACTIVITY_TO_PLAN, payload: { planId, dayNumber, activity } };
 };
 
+/**
+ * Returns redux thunk that adds activity to a day in database and calls action
+ * creator to generate action to add activity to day in redux store 
+ * @param {number} planId
+ * @param {number} dayId
+ * @param {number} activityId
+ * @param {string} token
+ * @returns thunk
+ */
 const addActivityToDayInAPI = (planId, dayId, activityId, token) => {
   return async dispatch => {
     try {
@@ -120,10 +136,26 @@ const addActivityToDayInAPI = (planId, dayId, activityId, token) => {
   };
 };
 
+/**
+ * Creates action to remove activity from a day in redux store
+ * @param {number} planId
+ * @param {number} dayNumber
+ * @param {number} activityId
+ * @returns action
+ */
 const removeActivityFromDay = (planId, dayNumber, activityId) => {
   return { type: REMOVE_ACTIVITY_FROM_PLAN, payload: { planId, dayNumber, activityId } };
 };
 
+/**
+ * Returns redux thunk that removes activity from a day in database and calls
+ * action creator to generate action to remove activity from day in redux store
+ * @param {number} planId
+ * @param {number} dayId
+ * @param {number} activityId
+ * @param {string} token
+ * @returns thunk
+ */
 const removeActivityFromDayInAPI = (planId, dayId, activityId, token) => {
   return async dispatch => {
     try {
