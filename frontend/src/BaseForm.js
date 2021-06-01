@@ -2,6 +2,11 @@ import { Button } from "bootstrap";
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 
+/**
+ * Component to create template for forms used in other components
+ * @param {Object} param0 
+ * @returns JSX code for rendering a form
+ */
 const BaseForm = ({ inputs, cancel, btnText, submitCallback }) => {
   // inputs should be array of name, label, type, default, & opt. choices
   const initFormData = inputs.reduce((obj, input) => {
