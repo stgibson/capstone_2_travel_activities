@@ -1,6 +1,7 @@
-import { Button } from "bootstrap";
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import { v4 as uuid } from "uuid";
 
 /**
  * Component to create template for forms used in other components
@@ -11,7 +12,8 @@ const BaseForm = ({ inputs, cancel, btnText, submitCallback }) => {
   // inputs should be array of name, label, type, default, & opt. choices
   const initFormData = inputs.reduce((obj, input) => {
     obj[input.name] = input.default;
-  });
+    return obj;
+  }, {});
   const [formData, setFormData] = useState(initFormData);
 
   const handleChange = evt => {
@@ -33,12 +35,12 @@ const BaseForm = ({ inputs, cancel, btnText, submitCallback }) => {
     <>
       <Form>
         {
-          inputs.map(input => {
-            <Form.Group controlId={ input.name }>
+          inputs.map(input => (
+            <Form.Group key={ uuid() } controlId={ input.name }>
               <Form.Label>{ input.label }</Form.Label>
               <Form.Control type={ input.type } onChange={ handleChange } />
             </Form.Group>
-          })
+          ))
         }
       </Form>
       {
