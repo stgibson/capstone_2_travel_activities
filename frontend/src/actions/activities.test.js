@@ -43,13 +43,7 @@ describe("favorite activities action creators", () => {
   it("can create activity to add favorite activity to store", async () => {
     const activity = {
       id: 1,
-      name: "Eiffel Tower",
-      description: "It lights up at night",
-      rating: "4.5",
-      bookingLink: "http://signupforeiffeltower.com",
-      price: "300",
-      currencyCode: "EUR",
-      cityId: 1
+      name: "Eiffel Tower"
     };
     const res = { data: { activity } };
     axios.get.mockResolvedValue(res);

@@ -25,10 +25,11 @@ const getDaysInPlanFromAPI = async (id, token) => {
   const results = await Promise.all(promises);
   for (let res of results) {
     const { number, activities } = res.data.day;
-    const activitiesCopy = activities.map(activity => ({
-      id: activity.id, name: activity.name
-    }));
-    days[number] = activitiesCopy;
+    const activitiesObj = activities.reduce((obj, activity) => {
+      obj[activity.id] = { id: activity.id, name: activity.name };
+      return obj;
+    }, {});
+    days[number] = activitiesObj;
   }
   return days;
 };

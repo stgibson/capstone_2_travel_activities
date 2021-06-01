@@ -75,8 +75,8 @@ const addFavoriteActivityToAPI = (id, token) => {
       });
       const res =
         await axios.get(`${process.env.API_BASE_URL}/activities/${id}`);
-      const { activity } = res.data;
-      dispatch(addFavoriteActivity(activity));
+      const { id: activityId, name } = res.data.activity;
+      dispatch(addFavoriteActivity({ id: activityId, name }));
     }
     catch (err) {
       dispatch(showErr(err.message));

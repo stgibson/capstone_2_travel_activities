@@ -76,14 +76,14 @@ const addPlan = plan => {
 const addPlanToAPI = (plan, token) => {
   return async dispatch => {
     try {
-      const res1 =
+      const res =
         await axios.post(`${process.env.API_BASE_URL}/plans`, plan, {
           headers: { "Authorization": `Bearer ${token}` }
         });
-      const { plan: newPlan } = res1.data;
+      const { plan: newPlan } = res.data;
       const days = {};
       for (let i = 0; i < plan.numOfDays; i++) {
-        days[i + 1] = [];
+        days[i + 1] = {};
       }
       newPlan.days = days;
       dispatch(addPlan(newPlan));

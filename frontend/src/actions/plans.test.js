@@ -88,9 +88,9 @@ describe("travel plans action creators", () => {
           {
             id: 1,
             name: "Test Plan 1",
-            days: { 1: [{ id: 1, name: "Eiffel Tower" }], 2: [] }
+            days: { 1: { 1: { id: 1, name: "Eiffel Tower" } }, 2: {} }
           },
-          { id: 2, name: "Test Plan 2", days: { 1: [], 2: [] } }
+          { id: 2, name: "Test Plan 2", days: { 1: {}, 2: {} } }
         ]
       });
     });
@@ -98,13 +98,12 @@ describe("travel plans action creators", () => {
 
   it("can create action to add new plan", async () => {
     const plan = { id: 2, name: "New Test Plan" };
-    const res1 = { data: { plan } };
-    const res2 = { data: { plan: { ...plan, days: [{ 1: 1 }, { 2: 2 }] } } };
+    const res = { data: { plan } };
     
     axios.post.mockImplementation((url) => {
       switch (url) {
         case `${process.env.API_BASE_URL}/plans`:
-          return Promise.resolve(res1);
+          return Promise.resolve(res);
         default:
           return Promise.reject(new Error("Invalid URL"));
       }
@@ -118,7 +117,7 @@ describe("travel plans action creators", () => {
       expect(actions.length).toEqual(1);
       expect(actions[0]).toEqual({
         type: ADD_PLAN,
-        plan: { id: 2, name: "New Test Plan", days: { 1: [], 2: [] } }
+        plan: { id: 2, name: "New Test Plan", days: { 1: {}, 2: {} } }
       });
     });
   });
