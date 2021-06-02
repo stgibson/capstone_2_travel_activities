@@ -65,13 +65,6 @@ a list of activities
 * Logged in users can add an activity to their list of favorite activities
 * Logged in users can view their favorite activities
 * Logged in users can remove an activity from their list of favorite activities
-* Logged in users can create a new travel plan, where they can specify how many
-days will be in their plan
-* Logged in users can add a travel activity from their list of favorite
-activities to a day in their travel plan
-* Logged in users can remove a travel activity from a day in their travel plan
-* Logged in users can view a list of their travel plans, and view each one in
-detail
 
 ### User Flow
 
@@ -87,23 +80,20 @@ activity's name. The user can view details on the activity, and the user may
 choose to add it to their list of favorite activities. The user may also click
 on a link in the navigation bar to see the user's list of favorite activities.
 On the favorite activities page, the user may choose to remove an activity from
-the user's list. The user may also choose to create a travel plan by navigating
-to the Create a New Travel Plan Page. The user can create a travel plan on this
-page by first submitting a form to set the name of the travel plan and the
-number of days in the travel plan. The user then can use a dropdown menu of
-their favorite travel activities to add an activity in a day in the user's plan.
-The user may also remove an activity from a day. The user can view a list of
-their travel plans by name by using the navigation bar to navigate to the Travel
-Plans List Page. The user can navigate to the Travel Plan Details Page for a
-specific travel plan by clicking on its name in the list of travel plans. On the
-Travel Plan Details Page, the user has the option to edit or delete the travel
-plan. The user can also use the navigation bar at any time to return back to the
+the user's list. The user can also use the navigation bar at any time to return back to the
 home page or to log out when the user is done for the day.
 
 ### Backlog
 
 The following is a list of backlog features for future versions of the project:
 * Add error handling for routes
+* Logged in users can create a new travel plan, where they can specify how many
+days will be in their plan
+* Logged in users can add a travel activity from their list of favorite
+activities to a day in their travel plan
+* Logged in users can remove a travel activity from a day in their travel plan
+* Logged in users can view a list of their travel plans, and view each one in
+detail
 * Add an About Page
 * Add a Contact Page
 * Add a way to share travel plans with other users
