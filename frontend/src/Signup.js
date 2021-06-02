@@ -1,7 +1,20 @@
 import React from "react";
+import BaseForm from "./BaseForm";
 
-const Signup = () => {
-  return <div>Signup Page</div>;
+/**
+ * Component for displaying form to create an account
+ * @param {Object} param0 
+ * @returns JSX code for rendering signup page
+ */
+const Signup = ({ signup }) => {
+  const inputs = [
+    { name: "username", label: "Username:", type: "text", default: "" },
+    { name: "password", label: "Password", type: "password", default: "" }
+  ]
+
+  return (
+    <BaseForm inputs={ inputs } btnText="Sign Up" submitCallback={ signup } />
+  );
 };
 
 export default Signup;

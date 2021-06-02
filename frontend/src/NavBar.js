@@ -9,18 +9,18 @@ import Nav from "react-bootstrap/Nav";
  * @returns JSX code for rendering navigation bar
  */
 const NavBar = ({ logout }) => {
-  const username = useSelector(store => store.username);
+  const token = useSelector(store => store.token);
 
   return (
     <Navbar bg="light" varian="light">
       <Navbar.Brand href="/">Travel Activities</Navbar.Brand>
       {
-        username ? (
+        token ? (
           <Nav className="ml-auto">
-            <Nav.Link href="/favorite-activities">
+            <Nav.Link href="/activities/like">
               My Favorite Activities
             </Nav.Link>
-            <Nav.Link href="/create-plan">Create a New Plan</Nav.Link>
+            <Nav.Link href="/plans/add">Create a New Plan</Nav.Link>
             <Nav.Link href="/plans">My Plans</Nav.Link>
             <Nav.Link href="/" onClick={ logout }>Logout</Nav.Link>
           </Nav>

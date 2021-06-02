@@ -1,7 +1,7 @@
 import activities from "./activities";
 import error from "./error";
 import plans from "./plans";
-import username from "./username";
+import token from "./token";
 import { combineReducers } from "redux";
 
-export default combineReducers({ activities, error, plans, username });
+export default combineReducers({ activities, error, plans, token });
