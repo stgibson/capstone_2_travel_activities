@@ -20,8 +20,8 @@ const NavBar = ({ logout }) => {
             <Nav.Link href="/activities/like">
               My Favorite Activities
             </Nav.Link>
-            <Nav.Link href="/plans/add">Create a New Plan</Nav.Link>
-            <Nav.Link href="/plans">My Plans</Nav.Link>
+            {/* <Nav.Link href="/plans/add">Create a New Plan</Nav.Link>
+            <Nav.Link href="/plans">My Plans</Nav.Link> */}
             <Nav.Link href="/" onClick={ logout }>Logout</Nav.Link>
           </Nav>
         ) : (
