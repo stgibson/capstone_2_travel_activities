@@ -64,7 +64,6 @@ and country
 a list of activities
 * Logged in users can add an activity to their list of favorite activities
 * Logged in users can view their favorite activities
-* Logged in users can remove an activity from their list of favorite activities
 
 ### User Flow
 
@@ -86,6 +85,9 @@ home page or to log out when the user is done for the day.
 ### Backlog
 
 The following is a list of backlog features for future versions of the project:
+* Logged in users can remove an activity from their list of favorite activities
+* Activity Details Page shows location name
+* Going back to Home page, can still see previous search results
 * Add error handling for routes
 * Logged in users can create a new travel plan, where they can specify how many
 days will be in their plan
