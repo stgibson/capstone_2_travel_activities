@@ -18,7 +18,7 @@ const FavoriteActivities = () => {
   }, [activitiesObj]);
 
   return (
-    <ActivityList activities={ activities } title="My Favorite Activities" />
+    <ActivityList title="My Favorite Activities" activities={ activities } />
   );
 };
 

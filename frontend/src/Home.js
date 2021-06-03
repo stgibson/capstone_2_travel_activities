@@ -21,8 +21,8 @@ const Home = ({ getActivitiesByLocation }) => {
     <>
       <ActivitySearch searchActivities={ searchActivities } />
       <ActivityList
-        activities={ activities }
         title="Results:"
+        activities={ activities }
       />
     </>
   );

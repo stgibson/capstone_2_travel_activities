@@ -8,7 +8,7 @@ import { addFavoriteActivityToAPI } from "./actions/activities";
  * @param {Object} param0 
  * @returns JSX code for rendering list of activities
  */
-const ActivityList = ({ activities, title }) => {
+const ActivityList = ({ title, activities }) => {
   const token = useSelector(store => store.token);
   const likedActivities = useSelector(store => store.activities, shallowEqual);
   const dispatch = useDispatch();
