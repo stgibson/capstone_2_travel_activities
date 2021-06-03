@@ -1,6 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import Activity from "./Activity";
+import React, { useState, useEffect } from "react";
+import { useSelector, shallowEqual } from "react-redux";
+import ActivityList from "./ActivityList";
 
 /**
  * Component for displaying list of currently logged in user's favorite
@@ -8,20 +8,17 @@ import Activity from "./Activity";
  * @returns JSX code for rendering favorite activities page
  */
 const FavoriteActivities = () => {
-  const activities = useSelector(store => store.activities);
+  const [activities, setActivities] = useState([]);
+  const activitiesObj = useSelector(store => store.activities, shallowEqual);
+
+  useEffect(() => {
+    const activitiesArr =
+      Object.keys(activitiesObj).map(id => activitiesObj[id]);
+    setActivities(activitiesArr);
+  }, [activitiesObj]);
 
   return (
-    <div>
-      <h2>My Favorite Activities:</h2>
-      {
-        Object.keys(activities).map(id => (
-          <Activity
-            key={ id }
-            activity={ activities[id] }
-          />
-        ))
-      }
-    </div>
+    <ActivityList activities={ activities } title="My Favorite Activities" />
   );
 };
 
