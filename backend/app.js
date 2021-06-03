@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
-  if (process.env.NODE_ENV !== "test") {
+  if (process.env.NODE_ENV !== "test" && err.stack) {
     console.error(err.stack);
   }
   return res.json({ error: err, message: err.message });
