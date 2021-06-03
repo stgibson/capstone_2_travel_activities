@@ -1,7 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import Activity from "./Activity";
-import { addFavoriteActivityToAPI } from "./actions/activities";
+import {
+  addFavoriteActivityToAPI,
+  removeFavoriteActivityFromAPI
+} from "./actions/activities";
 
 /**
  * Component for displaying activity results from searching activities
@@ -20,8 +23,18 @@ const ActivityList = ({ title, activities }) => {
    */
   const handleLike = evt => {
     const { id } = evt.target.parentElement;
-    dispatch(addFavoriteActivityToAPI(id, token));
+    dispatch(addFavoriteActivityToAPI(Number.parseInt(id), token));
   };
+
+  /**
+   * Calls dispatch to remove activity from list of currently logged in user's
+   * favorite activities
+   * @param {Object} evt 
+   */
+  const handleUnlike = evt => {
+    const { id } = evt.target.parentElement;
+    dispatch(removeFavoriteActivityFromAPI(Number.parseInt(id), token));
+  }
 
   /**
    * Determines if currently logged in user likes activity with provided id
@@ -44,6 +57,8 @@ const ActivityList = ({ title, activities }) => {
             <Activity
               key={ activity.id }
               activity={ activity }
+              btnText="Unlike"
+              btnCallback={ evt => handleUnlike(evt) }
             />
           ) : (
             <Activity

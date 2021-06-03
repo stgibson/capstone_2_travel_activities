@@ -44,15 +44,19 @@ const plans = (state=INIT_STATE, action) => {
     case REMOVE_ACTIVITY_FROM_PLAN:
       plan = state[action.payload.planId];
       day = plan.days[action.payload.dayNumber];
+      const newDay = Object.keys(day).reduce((obj, id) => {
+        if (Number.parseInt(id) !== action.payload.activityId) {
+          obj[id] = day[id];
+        }
+        return obj;
+      }, {});
       return {
         ...state,
         [action.payload.planId]: {
           ...plan,
           days: {
             ...plan.days,
-            [action.payload.dayNumber]: {
-              ...day, [action.payload.activityId]: undefined
-            }
+            [action.payload.dayNumber]: newDay
           }
         }
       };

@@ -157,7 +157,7 @@ router.delete("/:id/unlike", async (req, res, next) => {
       throw new ExpressError("Invalid request: id must be an integer", 400);
     }
     const username = res.locals.username;
-    await UserActivity.destroy({ where: { username } });
+    await UserActivity.destroy({ where: { username, activityId: idInt } });
     return res.json({ message: "activity unliked" });
   }
   catch (err) {

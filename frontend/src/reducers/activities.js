@@ -24,7 +24,13 @@ const activities = (state=INIT_STATE, action) => {
     case ADD_FAVORITE_ACTIVITY:
       return { ...state, [action.activity.id]: action.activity };
     case REMOVE_FAVORITE_ACTIVITY:
-      return { ...state, [action.id]: undefined };
+      const newState = Object.keys(state).reduce((obj, id) => {
+        if (Number.parseInt(id) !== action.id) {
+          obj[id] = state[id];
+        }
+        return obj;
+      }, {});
+      return { ...newState };
     case RESET_ALL:
       return { ...INIT_STATE };
     default:
