@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import ActivitySearch from "./ActivitySearch";
-import ActivityResults from "./ActivityResults";
+import ActivityList from "./ActivityList";
 
 /**
  * Component that allows users to search for activities based on location
  * @param {Object} param0 
  * @returns JSX code for rendering home page
  */
-const Home = ({ getActivitiesByLocation, getActivityDetails }) => {
+const Home = ({ getActivitiesByLocation }) => {
   const [activities, setActivities] = useState([]);
 
   const searchActivities = async data => {
@@ -20,9 +20,9 @@ const Home = ({ getActivitiesByLocation, getActivityDetails }) => {
   return (
     <>
       <ActivitySearch searchActivities={ searchActivities } />
-      <ActivityResults
+      <ActivityList
         activities={ activities }
-        getActivityDetails={ getActivityDetails }
+        title="Results:"
       />
     </>
   );

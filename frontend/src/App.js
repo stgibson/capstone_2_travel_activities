@@ -8,6 +8,7 @@ import Alert from "react-bootstrap/Alert";
 import NavBar from "./NavBar";
 import Routes from "./Routes";
 import { setToken, removeToken } from "./actions/token";
+import { getFavoriteActivitiesFromAPI } from "./actions/activities";
 
 /**
  * Main component of the app
@@ -121,6 +122,12 @@ function App() {
       setCurrToken(token);
     }
   }, [dispatch]);
+
+  useEffect(() => {
+    if (currToken) {
+      dispatch(getFavoriteActivitiesFromAPI(currToken));
+    }
+  }, [dispatch, currToken]);
 
   return (
     <div>

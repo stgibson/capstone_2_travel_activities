@@ -10,14 +10,6 @@ import { getFavoriteActivitiesFromAPI } from "./actions/activities";
  */
 const FavoriteActivities = () => {
   const activities = useSelector(store => store.activities);
-  const token = useSelector(store => store.token);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (token) {
-      dispatch(getFavoriteActivitiesFromAPI(token));
-    }
-  }, [dispatch, token]);
 
   return (
     <div>
