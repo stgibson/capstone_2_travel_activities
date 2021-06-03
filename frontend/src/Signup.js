@@ -13,7 +13,12 @@ const Signup = ({ signup }) => {
   ]
 
   return (
-    <BaseForm inputs={ inputs } btnText="Sign Up" submitCallback={ signup } />
+    <BaseForm
+      title="Sign Up"
+      inputs={ inputs }
+      btnText="Sign Up"
+      submitCallback={ signup }
+    />
   );
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Signup from "./Signup";
@@ -15,8 +15,12 @@ import EditPlan from "./EditPlan";
  * @param {Object} param0 
  * @returns JSX code for rendering components based on url path
  */
-const Routes = ({ signup, login, searchActivities }) => {
-  const token = useSelector(store => store.token);
+const Routes = ({ signup, login, getActivitiesByLocation, getActivityDetails }) => {
+  // do this to reload when user signs in
+  let token = useSelector(store => store.token);
+  if (!token) {
+    token = localStorage.getItem("token");
+  }
 
   return (
     <>
@@ -24,14 +28,16 @@ const Routes = ({ signup, login, searchActivities }) => {
         token ? (
           <Switch>
             <Route exact path="/home">
-              <Home searchActivities={ searchActivities } />
+              <Home getActivitiesByLocation={ getActivitiesByLocation } />
             </Route>
-            <Route exact path="/activities/like"><FavoriteActivities /></Route>
-            <Route exact path="/activities/:id"><ActivityDetails /></Route>
-            <Route exact path="/plans/add"><NewPlan /></Route>
-            <Route exact path="/plans"><PlanList /></Route>
-            <Route exact path="/plans/:id"><EditPlan /></Route>
+            <Route exact path="/activities"><FavoriteActivities /></Route>
+            <Route exact path="/activities/:id">
+              <ActivityDetails getActivityDetails={ getActivityDetails } />
+            </Route>
             <Redirect to="/home" />
+            {/* <Route exact path="/plans/add"><NewPlan /></Route>
+            <Route exact path="/plans"><PlanList /></Route>
+            <Route exact path="/plans/:id"><EditPlan /></Route> */}
           </Switch>
         ) : (
           <Switch>

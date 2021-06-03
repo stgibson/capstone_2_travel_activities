@@ -17,7 +17,7 @@ const NavBar = ({ logout }) => {
       {
         token ? (
           <Nav className="ml-auto">
-            <Nav.Link href="/activities/like">
+            <Nav.Link href="/activities">
               My Favorite Activities
             </Nav.Link>
             {/* <Nav.Link href="/plans/add">Create a New Plan</Nav.Link>

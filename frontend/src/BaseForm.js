@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
  * @param {Object} param0 
  * @returns JSX code for rendering a form
  */
-const BaseForm = ({ inputs, cancel, btnText, submitCallback }) => {
+const BaseForm = ({ title, inputs, cancel, btnText, submitCallback }) => {
   // inputs should be array of name, label, type, default, & opt. choices
   const initFormData = inputs.reduce((obj, input) => {
     obj[input.name] = input.default;
@@ -33,6 +33,7 @@ const BaseForm = ({ inputs, cancel, btnText, submitCallback }) => {
   
   return (
     <>
+      <h2>{ title }</h2>
       <Form>
         {
           inputs.map(input => (

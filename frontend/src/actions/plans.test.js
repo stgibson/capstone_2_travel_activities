@@ -58,19 +58,19 @@ describe("travel plans action creators", () => {
     // Learned how to mock multiple calls of axios at https://stackoverflow.com/questions/57747392/using-jest-to-mock-multiple-axios-calls
     axios.get.mockImplementation((url) => {
       switch (url) {
-        case `${process.env.API_BASE_URL}/plans`:
+        case `${process.env.REACT_APP_API_BASE_URL}/plans`:
           return Promise.resolve(res1);
-        case `${process.env.API_BASE_URL}/plans/1`:
+        case `${process.env.REACT_APP_API_BASE_URL}/plans/1`:
           return Promise.resolve(res2);
-        case `${process.env.API_BASE_URL}/plans/2`:
+        case `${process.env.REACT_APP_API_BASE_URL}/plans/2`:
           return Promise.resolve(res3);
-        case `${process.env.API_BASE_URL}/days/1`:
+        case `${process.env.REACT_APP_API_BASE_URL}/days/1`:
           return Promise.resolve(res4);
-        case `${process.env.API_BASE_URL}/days/2`:
+        case `${process.env.REACT_APP_API_BASE_URL}/days/2`:
           return Promise.resolve(res5);
-        case `${process.env.API_BASE_URL}/days/3`:
+        case `${process.env.REACT_APP_API_BASE_URL}/days/3`:
           return Promise.resolve(res6);
-        case `${process.env.API_BASE_URL}/days/4`:
+        case `${process.env.REACT_APP_API_BASE_URL}/days/4`:
           return Promise.resolve(res7);
         default:
           return Promise.reject(new Error("Invalid URL"));
@@ -102,7 +102,7 @@ describe("travel plans action creators", () => {
     
     axios.post.mockImplementation((url) => {
       switch (url) {
-        case `${process.env.API_BASE_URL}/plans`:
+        case `${process.env.REACT_APP_API_BASE_URL}/plans`:
           return Promise.resolve(res);
         default:
           return Promise.reject(new Error("Invalid URL"));
@@ -131,7 +131,7 @@ describe("travel plans action creators", () => {
     const res = { data: { day } };
     axios.get.mockImplementation((url) => {
       switch (url) {
-        case `${process.env.API_BASE_URL}/days/1`:
+        case `${process.env.REACT_APP_API_BASE_URL}/days/1`:
           return Promise.resolve(res);
         default:
           return Promise.reject(new Error("Invalid URL"));
@@ -159,7 +159,7 @@ describe("travel plans action creators", () => {
     const res = { data: { day } };
     axios.get.mockImplementation((url) => {
       switch (url) {
-        case `${process.env.API_BASE_URL}/days/1`:
+        case `${process.env.REACT_APP_API_BASE_URL}/days/1`:
           return Promise.resolve(res);
         default:
           return Promise.reject(new Error("Invalid URL"));

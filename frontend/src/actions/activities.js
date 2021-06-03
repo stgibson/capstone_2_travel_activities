@@ -37,10 +37,12 @@ const getFavoriteActivities = activities => {
 const getFavoriteActivitiesFromAPI = token => {
   return async dispatch => {
     try {
-      const res =
-        await axios.get(`${process.env.API_BASE_URL}/activities/like/all`, {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_BASE_URL}/activities/like/all`,
+        {
           headers: { "Authorization": `Bearer ${token}` }
-        });
+        }
+      );
       const { activities } = res.data;
       dispatch(getFavoriteActivities(activities));
     }
@@ -70,11 +72,19 @@ const addFavoriteActivity = activity => {
 const addFavoriteActivityToAPI = (id, token) => {
   return async dispatch => {
     try {
-      await axios.put(`${process.env.API_BASE_URL}/activities/${id}/like`, {
-        headers: { "Authorization": `Bearer ${token}` }
-      });
-      const res =
-        await axios.get(`${process.env.API_BASE_URL}/activities/${id}`);
+      await axios.put(
+        `${process.env.REACT_APP_API_BASE_URL}/activities/${id}/like`,
+        {},
+        {
+          headers: { "Authorization": `Bearer ${token}` }
+        }
+      );
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_BASE_URL}/activities/${id}`,
+        {
+          headers: { "Authorization": `Bearer ${token}` }
+        }
+      );
       const { id: activityId, name } = res.data.activity;
       dispatch(addFavoriteActivity({ id: activityId, name }));
     }
@@ -105,7 +115,7 @@ const removeFavoriteActivityFromAPI = (id, token) => {
   return async dispatch => {
     try {
       await axios.delete(
-        `${process.env.API_BASE_URL}/activities/${id}/unlike`,
+        `${process.env.REACT_APP_API_BASE_URL}/activities/${id}/unlike`,
         {
           headers: { "Authorization": `Bearer ${token}` }
         }

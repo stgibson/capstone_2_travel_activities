@@ -39,7 +39,7 @@ const getPlansFromAPI = token => {
   return async dispatch => {
     try {
       const res =
-        await axios.get(`${process.env.API_BASE_URL}/plans`, {
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/plans`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
       const { plans } = res.data;
@@ -77,7 +77,7 @@ const addPlanToAPI = (plan, token) => {
   return async dispatch => {
     try {
       const res =
-        await axios.post(`${process.env.API_BASE_URL}/plans`, plan, {
+        await axios.post(`${process.env.REACT_APP_API_BASE_URL}/plans`, plan, {
           headers: { "Authorization": `Bearer ${token}` }
         });
       const { plan: newPlan } = res.data;
@@ -118,12 +118,15 @@ const addActivityToDayInAPI = (planId, dayId, activityId, token) => {
   return async dispatch => {
     try {
       await axios.put(
-        `${process.env.API_BASE_URL}/days/${dayId}/activities/${activityId}`, {
+        `${process.env.REACT_APP_API_BASE_URL}/days/${dayId}/activities/${activityId}`,
+        {},
+        {
           headers: { "Authorization": `Bearer ${token}` }
-        });
+        }
+      );
       // determine the day number of dayId and get the activity
       const res =
-        await axios.get(`${process.env.API_BASE_URL}/days/${dayId}`, {
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/days/${dayId}`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
       const { number: dayNumber, activities } = res.data.day;
@@ -160,12 +163,14 @@ const removeActivityFromDayInAPI = (planId, dayId, activityId, token) => {
   return async dispatch => {
     try {
       await axios.delete(
-        `${process.env.API_BASE_URL}/days/${dayId}/activities/${activityId}`, {
+        `${process.env.REACT_APP_API_BASE_URL}/days/${dayId}/activities/${activityId}`,
+        {
           headers: { "Authorization": `Bearer ${token}` }
-        });
+        }
+      );
       // determine the day number of dayId and get the activity
       const res =
-        await axios.get(`${process.env.API_BASE_URL}/days/${dayId}`, {
+        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/days/${dayId}`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
       const { number: dayNumber } = res.data.day;

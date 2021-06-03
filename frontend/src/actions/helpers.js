@@ -12,14 +12,14 @@ dotenv.config();
  * @returns days
  */
 const getDaysInPlanFromAPI = async (id, token) => {
-  const res = await axios.get(`${process.env.API_BASE_URL}/plans/${id}`, {
+  const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/plans/${id}`, {
     headers: { "Authorization": `Bearer ${token}` }
   });
   const { plan } = res.data;
   const days = {};
   const promises = [];
   for (let day of plan.days) {
-    const promise = axios.get(`${process.env.API_BASE_URL}/days/${day.id}`, {
+    const promise = axios.get(`${process.env.REACT_APP_API_BASE_URL}/days/${day.id}`, {
       headers: { "Authorization": `Bearer ${token}` }
     });
     promises.push(promise);
