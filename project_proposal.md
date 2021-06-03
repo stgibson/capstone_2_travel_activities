@@ -96,6 +96,7 @@ activities to a day in their travel plan
 * Logged in users can remove a travel activity from a day in their travel plan
 * Logged in users can view a list of their travel plans, and view each one in
 detail
+* Redux store persists with local storage
 * Add an About Page
 * Add a Contact Page
 * Add a way to share travel plans with other users
