@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import Activity from "./Activity";
-import { getFavoriteActivitiesFromAPI } from "./actions/activities";
 
 /**
  * Component for displaying list of currently logged in user's favorite
