@@ -7,9 +7,10 @@ import BaseForm from "./BaseForm";
  * @returns JSX code for rendering activities search form
  */
 const ActivitySearch = ({ searchActivities }) => {
+  // remove defaults for production
   const inputs = [
-    { name: "city", label: "City", type: "text", default: "" },
-    { name: "country", label: "Country", type: "text", default: "" }
+    { name: "city", label: "City", type: "text", default: "paris" },
+    { name: "country", label: "Country", type: "text", default: "france" }
   ];
 
   return (

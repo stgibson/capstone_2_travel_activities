@@ -7,9 +7,15 @@ import BaseForm from "./BaseForm";
  * @returns JSX code for rendering login page
  */
 const Login = ({ login }) => {
+  // remove defaults for production
   const inputs = [
-    { name: "username", label: "Username:", type: "text", default: "" },
-    { name: "password", label: "Password", type: "password", default: "" }
+    {
+      name: "username",
+      label: "Username:",
+      type: "text",
+      default: "testuser"
+    },
+    { name: "password", label: "Password", type: "password", default: "cab" }
   ]
 
   return (
