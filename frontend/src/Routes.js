@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Signup from "./Signup";
@@ -34,10 +34,10 @@ const Routes = ({ signup, login, getActivitiesByLocation, getActivityDetails }) 
             <Route exact path="/activities/:id">
               <ActivityDetails getActivityDetails={ getActivityDetails } />
             </Route>
-            <Redirect to="/home" />
-            {/* <Route exact path="/plans/add"><NewPlan /></Route>
+            <Route exact path="/plans/add"><NewPlan /></Route>
             <Route exact path="/plans"><PlanList /></Route>
-            <Route exact path="/plans/:id"><EditPlan /></Route> */}
+            <Route exact path="/plans/:id"><EditPlan /></Route>
+            <Redirect to="/home" />
           </Switch>
         ) : (
           <Switch>
