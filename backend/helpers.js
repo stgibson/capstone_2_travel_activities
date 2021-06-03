@@ -30,6 +30,7 @@ const cityCountryToLatLon = async (city, country) => {
   if (process.env.NODE_ENV === "test") {
     throw new Error("Should not call cityCountryToLatLon during automated testing");
   }
+  throw new Error("Should not call cityCountryToLatLon right now");
 
   const address = urlEncodeAddress(`${city}, ${country}`);
 
@@ -53,6 +54,7 @@ const getActivities = async (latitude, longitude) => {
   if (process.env.NODE_ENV === "test") {
     throw new Error("Should not call getActivities during automated testing");
   }
+  throw new Error("Should not call getActivities right now");
 
   const res = await amadeus.shopping.activities.get({ latitude, longitude });
   return res.data;
