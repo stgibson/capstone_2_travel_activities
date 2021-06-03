@@ -43,7 +43,7 @@ router.get("/", async (req, res, next) => {
         throw new ExpressError("Invalid city or country name", 400);
       }
       // then make API request
-      const activities = await getActivities(coordinates.lat, coordinates.lon);
+      const activities = await getActivities(coordinates.lat, coordinates.lng);
       for (let activity of activities) {
         const {
           name,
