@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
+/**
+ * Component for displaying an activity link with button
+ * @param {Object} param0 
+ * @returns JSX code for rendering an activity
+ */
 const Activity = ({ activity, btnText, btnCallback }) => {
   return (
     <div id={ activity.id }>

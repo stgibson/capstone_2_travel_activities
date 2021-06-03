@@ -19,6 +19,10 @@ function App() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  /**
+   * Creates new user based on data and stores token if no errors
+   * @param {Object{string}} data 
+   */
   const signup = async data => {
     try {
       const res = await axios.post(
@@ -36,6 +40,10 @@ function App() {
     }
   };
 
+  /**
+   * Authenticates user with data and stores token if no errors
+   * @param {Object{string}} data 
+   */
   const login = async data => {
     try {
       const res = await axios.post(
@@ -53,11 +61,19 @@ function App() {
     }
   };
 
+  /**
+   * Removes token from local storage and redux store
+   */
   const logout = () => {
     localStorage.removeItem("token");
     dispatch(removeToken());
   };
 
+  /**
+   * Gets list of activities from db based on data
+   * @param {Object{string}} data 
+   * @returns activities or null if error
+   */
   const getActivitiesByLocation = async data => {
     try {
       const res = await axios.get(
@@ -75,6 +91,11 @@ function App() {
     }
   };
 
+  /**
+   * Gets all info from db for activity with provided id
+   * @param {number} id 
+   * @returns activity details or null if error
+   */
   const getActivityDetails = async id => {
     try {
       const res = await axios.get(
@@ -91,6 +112,7 @@ function App() {
     }
   };
 
+  // when first renders, get token from local storage if it exists
   useEffect(() => {
     setErrors([]);
     const token = localStorage.getItem("token");

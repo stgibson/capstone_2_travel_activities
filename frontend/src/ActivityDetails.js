@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+/**
+ * Component for displaying information on an activity
+ * @param {Object} param0 
+ * @returns JSX code for rendering activity details page
+ */
 const ActivityDetails = ({ getActivityDetails }) => {
   const { id } = useParams();
   const [currActivity, setCurrActivity] = useState(null);
 
+  // get details on activity by id
   useEffect(() => {
     const getActivity = async () => {
       const activity = await getActivityDetails(id);
