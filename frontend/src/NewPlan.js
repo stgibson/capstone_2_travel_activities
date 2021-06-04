@@ -1,7 +1,46 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import BaseForm from "./BaseForm";
+import { addPlanToAPI } from "./actions/plans";
 
+/**
+ * Component for displaying form to create a new travel plan
+ * @returns JSX code for rendering create a travel plan form
+ */
 const NewPlan = () => {
-  return <div>New Plan Page</div>;
+  const history = useHistory();
+  const token = useSelector(store => store.token);
+  const dispatch = useDispatch();
+
+  const inputs = [
+    { name: "name", label: "Travel plan name:", type: "text", default: "" },
+    {
+      name: "numOfDays",
+      label: "Number of days in travel plan:", type: "text", default: "" }
+  ];
+
+  /**
+   * Handles creating plan by calling dispatch to add plan to db and redux
+   * store
+   * @param {Object{string}} data 
+   */
+  const handleCreatePlan = data => {
+    const { name, numOfDays } = data;
+    dispatch(addPlanToAPI(
+      { name, numOfDays: Number.parseInt(numOfDays) },
+      token
+    ));
+    history.push("/plans");
+  };
+
+  return (
+    <BaseForm
+      title="Create a New Travel Plan"
+      inputs={ inputs }
+      btnText="Create Plan"
+      submitCallback={ handleCreatePlan }
+    />);
 };
 
 export default NewPlan;

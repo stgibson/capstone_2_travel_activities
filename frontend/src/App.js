@@ -9,6 +9,7 @@ import NavBar from "./NavBar";
 import Routes from "./Routes";
 import { setToken, removeToken } from "./actions/token";
 import { getFavoriteActivitiesFromAPI } from "./actions/activities";
+import { getPlansFromAPI } from "./actions/plans";
 
 /**
  * Main component of the app
@@ -123,9 +124,11 @@ function App() {
     }
   }, [dispatch]);
 
+  // if user signs in, get the user's favorite activities and plans
   useEffect(() => {
     if (currToken) {
       dispatch(getFavoriteActivitiesFromAPI(currToken));
+      dispatch(getPlansFromAPI(currToken));
     }
   }, [dispatch, currToken]);
 
