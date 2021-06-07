@@ -15,7 +15,12 @@ const Login = ({ login }) => {
       type: "text",
       default: "testuser"
     },
-    { name: "password", label: "Password", type: "password", default: "cab" }
+    {
+      name: "password",
+      label: "Password",
+      type: "password",
+      default: "testing"
+    }
   ]
 
   return (
