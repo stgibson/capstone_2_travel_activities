@@ -109,29 +109,31 @@ const addActivityToDay = (planId, dayNumber, activity) => {
  * Returns redux thunk that adds activity to a day in database and calls action
  * creator to generate action to add activity to day in redux store 
  * @param {number} planId
- * @param {number} dayId
+ * @param {number} dayNumber
  * @param {number} activityId
  * @param {string} token
  * @returns thunk
  */
-const addActivityToDayInAPI = (planId, dayId, activityId, token) => {
+const addActivityToDayInAPI = (planId, dayNumber, activityId, token) => {
   return async dispatch => {
     try {
       await axios.put(
-        `${process.env.REACT_APP_API_BASE_URL}/days/${dayId}/activities/${activityId}`,
+        `${process.env.REACT_APP_API_BASE_URL}/plans/${planId}/days/${dayNumber}/activities/${activityId}`,
         {},
         {
           headers: { "Authorization": `Bearer ${token}` }
         }
       );
-      // determine the day number of dayId and get the activity
-      const res =
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/days/${dayId}`, {
-          headers: { "Authorization": `Bearer ${token}` }
-        });
-      const { number: dayNumber, activities } = res.data.day;
-      const activity = activities.find(activity => activity.id === activityId);
-      dispatch(addActivityToDay(planId, dayNumber, activity));
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_BASE_URL}/activities/${activityId}`,
+        { headers: { "Authorization": `Bearer ${token}` } }
+      );
+      const { name } = res.data.activity;
+      dispatch(addActivityToDay(
+        planId,
+        dayNumber,
+        { id: activityId, name }
+      ));
     }
     catch (err) {
       dispatch(showErr(err.message));
@@ -154,26 +156,20 @@ const removeActivityFromDay = (planId, dayNumber, activityId) => {
  * Returns redux thunk that removes activity from a day in database and calls
  * action creator to generate action to remove activity from day in redux store
  * @param {number} planId
- * @param {number} dayId
+ * @param {number} dayNumber
  * @param {number} activityId
  * @param {string} token
  * @returns thunk
  */
-const removeActivityFromDayInAPI = (planId, dayId, activityId, token) => {
+const removeActivityFromDayInAPI = (planId, dayNumber, activityId, token) => {
   return async dispatch => {
     try {
       await axios.delete(
-        `${process.env.REACT_APP_API_BASE_URL}/days/${dayId}/activities/${activityId}`,
+        `${process.env.REACT_APP_API_BASE_URL}/plans/${planId}/days/${dayNumber}/activities/${activityId}`,
         {
           headers: { "Authorization": `Bearer ${token}` }
         }
       );
-      // determine the day number of dayId and get the activity
-      const res =
-        await axios.get(`${process.env.REACT_APP_API_BASE_URL}/days/${dayId}`, {
-          headers: { "Authorization": `Bearer ${token}` }
-        });
-      const { number: dayNumber } = res.data.day;
       dispatch(removeActivityFromDay(planId, dayNumber, activityId));
     }
     catch (err) {

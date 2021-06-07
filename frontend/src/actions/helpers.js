@@ -19,9 +19,12 @@ const getDaysInPlanFromAPI = async (id, token) => {
   const days = {};
   const promises = [];
   for (let day of plan.days) {
-    const promise = axios.get(`${process.env.REACT_APP_API_BASE_URL}/days/${day.id}`, {
-      headers: { "Authorization": `Bearer ${token}` }
-    });
+    const promise = axios.get(
+      `${process.env.REACT_APP_API_BASE_URL}/plans/${id}/days/${day.number}`,
+      {
+        headers: { "Authorization": `Bearer ${token}` }
+      }
+    );
     promises.push(promise);
   }
   const results = await Promise.all(promises);
