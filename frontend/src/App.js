@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import NavBar from "./NavBar";
 import Routes from "./Routes";
+import Footer from "./Footer";
 import { setToken, removeToken } from "./actions/token";
 import { getFavoriteActivitiesFromAPI } from "./actions/activities";
 import { getPlansFromAPI } from "./actions/plans";
@@ -147,7 +148,8 @@ function App() {
           getActivitiesByLocation={ getActivitiesByLocation }
           getActivityDetails={ getActivityDetails }
         />
-      </Container> 
+        <Footer />
+      </Container>
     </div>
   );
 }
