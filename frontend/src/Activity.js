@@ -8,15 +8,19 @@ import "./Activity.css";
  * @param {Object} param0 
  * @returns JSX code for rendering an activity
  */
-const Activity = ({ activity, btnText, btnCallback }) => {
+const Activity = ({ activity, btnText, btnVariant, btnCallback }) => {
   return (
-    <div id={ activity.id }>
+    <div className="Activity" id={ activity.id }>
       <Link className="Activity-link" to={ `/activities/${activity.id}` }>
         { activity.name }
       </Link>
       {
         btnText && (
-          <Button variant="primary" onClick={ btnCallback }>
+          <Button
+            variant={ btnVariant || "primary" }
+            size="sm"
+            onClick={ btnCallback }
+          >
             { btnText }
           </Button>
         )

@@ -6,6 +6,7 @@ import {
   addActivityToDayInAPI,
   removeActivityFromDayInAPI
 } from "./actions/plans";
+import "./Day.css";
 
 /**
  * Component for displaying a day in a travel plan
@@ -65,7 +66,6 @@ const Day = ({ day, planId }) => {
     setInputs([
       {
         name: "activity",
-        label: "Add Activity",
         type: "select",
         choices: inputChoices
       }
@@ -73,7 +73,7 @@ const Day = ({ day, planId }) => {
   }, [inputChoices])
 
   return (
-    <div id={ day.number }>
+    <div id={ day.number } className="Day">
       <h3>{ day.number }</h3>
       {
         day.activities.map(activity => (
@@ -81,6 +81,7 @@ const Day = ({ day, planId }) => {
             <Activity
               activity={ activity }
               btnText="Remove"
+              btnVariant="warning"
               btnCallback={ evt => handleRemoveActivityFromPlan(evt) }
             />
           </div>
@@ -88,7 +89,7 @@ const Day = ({ day, planId }) => {
       }
       <BaseForm
         inputs={ inputs }
-        btnText="Submit"
+        btnText="Add Activity"
         submitCallback={ handleAddActivityToPlan }
       />
     </div>

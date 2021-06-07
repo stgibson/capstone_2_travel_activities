@@ -35,7 +35,7 @@ const EditPlan = () => {
       <Row>
         {
           days.map(day => (
-            <Col key={ day.number } xs={ 3 }>
+            <Col key={ day.number } xs={ 6 } sm={ 4 } md={ 3 }>
               <Day
                 day={ day }
                 planId={ plan.id }
