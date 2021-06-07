@@ -19,11 +19,16 @@ const Home = ({ getActivitiesByLocation }) => {
 
   return (
     <>
-      <ActivitySearch searchActivities={ searchActivities } />
-      <ActivityList
-        title="Results:"
-        activities={ activities }
-      />
+      <div>
+        <ActivitySearch searchActivities={ searchActivities } />
+      </div>
+      <br />
+      <div>
+        <ActivityList
+          title="Results:"
+          activities={ activities }
+        />
+      </div>
     </>
   );
 };
