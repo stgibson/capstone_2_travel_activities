@@ -8,7 +8,7 @@ const INIT_STATE = [];
  * @param {Object} action 
  * @returns new state for error based on action
  */
-const error = (state=INIT_STATE, action) => {
+const errors = (state=INIT_STATE, action) => {
   switch(action.type) {
     case SHOW_ERR:
       return [...state, action.msg];
@@ -18,4 +18,4 @@ const error = (state=INIT_STATE, action) => {
   }
 };
 
-export default error;
+export default errors;
