@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import "./Activity.css";
 
 /**
  * Component for displaying an activity link with button
@@ -10,7 +11,9 @@ import Button from "react-bootstrap/Button";
 const Activity = ({ activity, btnText, btnCallback }) => {
   return (
     <div id={ activity.id }>
-      <Link to={ `/activities/${activity.id}` }>{ activity.name }</Link>
+      <Link className="Activity-link" to={ `/activities/${activity.id}` }>
+        { activity.name }
+      </Link>
       {
         btnText && (
           <Button variant="primary" onClick={ btnCallback }>
