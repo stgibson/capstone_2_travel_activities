@@ -1,5 +1,9 @@
 import React from "react";
 
+/**
+ * Component for displaying acknowledgements for the website
+ * @returns JSX code for rendering footer
+ */
 const Footer = () => {
   return (
     <>
