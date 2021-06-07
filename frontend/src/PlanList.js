@@ -11,6 +11,7 @@ const PlanList = () => {
 
   return (
     <>
+      <h2>My Travel Plans</h2>
       {
         Object.keys(plans).map(id => (
           <div id={ id } key={ id }>
