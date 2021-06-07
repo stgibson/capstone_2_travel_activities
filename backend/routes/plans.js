@@ -84,7 +84,7 @@ router.get("/:id", async (req, res, next) => {
 
 /**
  * Adds an activity to a day
- * PUT /plans/planId/days/:number/activities/:activityId
+ * PUT /plans/:planId/days/:number/activities/:activityId
  * {} => { message: "Added activity to day" }
  */
 router.put(
