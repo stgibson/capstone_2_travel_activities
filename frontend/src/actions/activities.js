@@ -47,7 +47,7 @@ const getFavoriteActivitiesFromAPI = token => {
       dispatch(getFavoriteActivities(activities));
     }
     catch (err) {
-      dispatch(showErr(err.message));
+      dispatch(showErr("Could not load your favorite activities."));
     }
   };
 }
@@ -89,7 +89,9 @@ const addFavoriteActivityToAPI = (id, token) => {
       dispatch(addFavoriteActivity({ id: activityId, name }));
     }
     catch (err) {
-      dispatch(showErr(err.message));
+      const msg =
+        "Failed to add activity to your list of favorite activities.";
+      dispatch(showErr(msg));
     }
   };
 };
@@ -123,7 +125,9 @@ const removeFavoriteActivityFromAPI = (id, token) => {
       dispatch(removeFavoriteActivity(id));
     }
     catch (err) {
-      dispatch(showErr(err.message));
+      const msg =
+        "Failed to remove activity from your list of favorite activities.";
+      dispatch(showErr(msg));
     }
   }
 };

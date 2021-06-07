@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
 import Container from "react-bootstrap/Container";
@@ -18,7 +18,8 @@ import { getPlansFromAPI } from "./actions/plans";
  */
 function App() {
   const [currToken, setCurrToken] = useState(null);
-  const [errors, setErrors] = useState([]);
+  const [errorsToDisplay, setErrorsToDisplay] = useState([]);
+  const errors = useSelector(store => store.errors);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -37,9 +38,12 @@ function App() {
       dispatch(setToken(token));
       setCurrToken(token);
       history.push("/home");
+      setErrorsToDisplay([]);
     }
     catch (err) {
-      console.error(err.message);
+      const msg =
+        "Invalid input or username has been taken. Please try again.";
+      setErrorsToDisplay([msg]);
     }
   };
 
@@ -58,9 +62,11 @@ function App() {
       dispatch(setToken(token));
       setCurrToken(token);
       history.push("/home");
+      setErrorsToDisplay([]);
     }
     catch (err) {
-      console.error(err.message);
+      const msg = "Invalid credentials. Please try again.";
+      setErrorsToDisplay([msg]);
     }
   };
 
@@ -86,10 +92,13 @@ function App() {
           headers: { "Authorization": `Bearer ${currToken}` }
         }
       );
+      setErrorsToDisplay([]);
       return res.data.activities;
     }
     catch (err) {
-      setErrors(errors => [err.message]);
+      const msg =
+        "Couldn't find activities at provided input. Please try another location.";
+      setErrorsToDisplay([msg]);
       return null;
     }
   };
@@ -107,17 +116,18 @@ function App() {
           headers: { "Authorization": `Bearer ${currToken}` }
         }
       );
+      setErrorsToDisplay([]);
       return res.data.activity;
     }
     catch (err) {
-      setErrors(errors => [...errors, err.message]);
+      const msg = "Couldn't find info on this activity";
+      setErrorsToDisplay([msg]);
       return null;
     }
   };
 
   // when first renders, get token from local storage if it exists
   useEffect(() => {
-    setErrors([]);
     const token = localStorage.getItem("token");
     if (token) {
       dispatch(setToken(token));
@@ -133,12 +143,21 @@ function App() {
     }
   }, [dispatch, currToken]);
 
+  useEffect(() => {
+    if (errors) {
+      setErrorsToDisplay(errors);
+    }
+    else {
+      setErrorsToDisplay([]);
+    }
+  }, [errors, setErrorsToDisplay]);
+
   return (
     <div>
       <NavBar logout={ logout } />
       <Container>
         {
-          errors.map(err => (
+          errorsToDisplay.map(err => (
             <Alert key={ uuid() } variant="danger">{ err }</Alert>
           ))
         }

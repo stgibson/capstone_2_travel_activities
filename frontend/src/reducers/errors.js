@@ -1,6 +1,6 @@
 import { SHOW_ERR } from "../actionTypes";
 
-const INIT_STATE = null;
+const INIT_STATE = [];
 
 /**
  * Manages error value in redux store
@@ -11,7 +11,7 @@ const INIT_STATE = null;
 const error = (state=INIT_STATE, action) => {
   switch(action.type) {
     case SHOW_ERR:
-      return action.msg;
+      return [...state, action.msg];
     // if not SHOW_ERR, no errors occured, so undo any prev errors
     default:
       return INIT_STATE;

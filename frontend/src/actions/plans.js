@@ -52,7 +52,7 @@ const getPlansFromAPI = token => {
       dispatch(getPlans(plans));
     }
     catch (err) {
-      dispatch(showErr(err.message));
+      dispatch(showErr("Could not load your travel plans."));
     }
   };
 }
@@ -89,7 +89,7 @@ const addPlanToAPI = (plan, token) => {
       dispatch(addPlan(newPlan));
     }
     catch (err) {
-      dispatch(showErr(err.message));
+      dispatch(showErr("Failed to create new travel plan."));
     }
   };
 };
@@ -136,7 +136,7 @@ const addActivityToDayInAPI = (planId, dayNumber, activityId, token) => {
       ));
     }
     catch (err) {
-      dispatch(showErr(err.message));
+      dispatch(showErr("Failed to add activity to day in your travel plan."));
     }
   };
 };
@@ -173,7 +173,8 @@ const removeActivityFromDayInAPI = (planId, dayNumber, activityId, token) => {
       dispatch(removeActivityFromDay(planId, dayNumber, activityId));
     }
     catch (err) {
-      dispatch(showErr(err.message));
+      const msg = "Failed to remove activity from day in your travel plan.";
+      dispatch(showErr(msg));
     }
   };
 };
