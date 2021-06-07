@@ -114,3 +114,133 @@ describe("GET /plans/:id", () => {
     expect(res2.status).toEqual(401);
   });
 });
+
+describe("PUT /plans/:planId/days/:number/activities/:activityId", () => {
+  it("can add activity to day in logged in user's plan", async () => {
+    const data = { name: "Test Plan", numOfDays: 2 };
+    const res1 = await request(app).post("/plans").send(data)
+      .set("authorization", `Bearer ${token1}`);
+    const { id } = res1.body.plan;
+    const res2 = await request(app)
+      .put(`/plans/${id}/days/1/activities/${activityId}`)
+      .set("authorization", `Bearer ${token1}`);
+    
+    expect(res2.status).toEqual(200);
+  });
+
+  it("fails to add activity to day in other user's plan", async () => {
+    const data = { name: "Test Plan", numOfDays: 2 };
+    const res1 = await request(app).post("/plans").send(data)
+      .set("authorization", `Bearer ${token1}`);
+    const { id } = res1.body.plan;
+    const res2 = await request(app)
+      .put(`/plans/${id}/days/1/activities/${activityId}`)
+      .set("authorization", `Bearer ${token2}`);
+    
+    expect(res2.status).toEqual(401);
+  });
+
+  it("fails to add activity to day if not logged in", async () => {
+    const data = { name: "Test Plan", numOfDays: 2 };
+    const res1 = await request(app).post("/plans").send(data)
+      .set("authorization", `Bearer ${token1}`);
+    const { id } = res1.body.plan;
+    const res2 = await request(app)
+      .put(`/plans/${id}/days/1/activities/${activityId}`);
+    
+    expect(res2.status).toEqual(401);
+  });
+});
+
+describe("GET /plans/:id/days/:number", () => {
+  it("can get activities in a day in logged in user's plan", async () => {
+    const data = { name: "Test Plan", numOfDays: 2 };
+    const res1 = await request(app).post("/plans").send(data)
+      .set("authorization", `Bearer ${token1}`);
+    const { id } = res1.body.plan;
+    await request(app).put(`/plans/${id}/days/1/activities/${activityId}`)
+      .set("authorization", `Bearer ${token1}`);
+    const res2 = await request(app).get(`/plans/${id}/days/1`)
+      .set("authorization", `Bearer ${token1}`);
+    const { day } = res2.body;
+    
+    expect(res2.status).toEqual(200);
+    expect(day.number).toEqual(1);
+    expect(day.activities.length).toEqual(1);
+    expect(day.activities[0].id).not.toBeNull();
+    expect(day.activities[0].name).toEqual("Eiffel Tower");
+  });
+
+  it("fails to get activities in a day in other user's plan", async () => {
+    const data = { name: "Test Plan", numOfDays: 2 };
+    const res1 = await request(app).post("/plans").send(data)
+      .set("authorization", `Bearer ${token1}`);
+    const { id } = res1.body.plan;
+    const res2 = await request(app)
+      .put(`/plans/${id}/days/1/activities/${activityId}`)
+      .set("authorization", `Bearer ${token2}`);
+    
+    expect(res2.status).toEqual(401);
+  });
+
+  it("fails to get activities in a day if not logged in", async () => {
+    const data = { name: "Test Plan", numOfDays: 2 };
+    const res1 = await request(app).post("/plans").send(data)
+      .set("authorization", `Bearer ${token1}`);
+    const { id } = res1.body.plan;
+    const res2 = await request(app)
+      .put(`/plans/${id}/days/1/activities/${activityId}`);
+    
+    expect(res2.status).toEqual(401);
+  });
+});
+
+describe("DELETE /plans/:planId/days/:number/activities/:activityId", () => {
+  it("can remove activity from a day in logged in user's plan", async () => {
+    const data = { name: "Test Plan", numOfDays: 2 };
+    const res1 = await request(app).post("/plans").send(data)
+      .set("authorization", `Bearer ${token1}`);
+    const { id } = res1.body.plan;
+    await request(app).put(`/plans/${id}/days/1/activities/${activityId}`)
+      .set("authorization", `Bearer ${token1}`);
+    const res2 = await request(app)
+      .delete(`/plans/${id}/days/1/activities/${activityId}`)
+      .set("authorization", `Bearer ${token1}`);
+    
+    expect(res2.status).toEqual(200);
+    
+    // verify activity has been deleted
+    const res3 = await request(app).get(`/plans/${id}/days/1`)
+      .set("authorization", `Bearer ${token1}`);
+    const { day } = res3.body;
+
+    expect(day.activities.length).toEqual(0);
+  });
+
+  it("fails to remove activity from a day in other user's plan", async () => {
+    const data = { name: "Test Plan", numOfDays: 2 };
+    const res1 = await request(app).post("/plans").send(data)
+      .set("authorization", `Bearer ${token1}`);
+    const { id } = res1.body.plan;
+    await request(app).put(`/plans/${id}/days/1/activities/${activityId}`)
+      .set("authorization", `Bearer ${token1}`);
+    const res2 = await request(app)
+      .delete(`/plans/${id}/days/1/activities/${activityId}`)
+      .set("authorization", `Bearer ${token2}`);
+    
+    expect(res2.status).toEqual(401);
+  });
+
+  it("fails to remove activity from a day if not logged in", async () => {
+    const data = { name: "Test Plan", numOfDays: 2 };
+    const res1 = await request(app).post("/plans").send(data)
+      .set("authorization", `Bearer ${token1}`);
+    const { id } = res1.body.plan;
+    await request(app).put(`/plans/${id}/days/1/activities/${activityId}`)
+      .set("authorization", `Bearer ${token1}`);
+    const res2 = await request(app)
+      .delete(`/plans/${id}/days/1/activities/${activityId}`);
+    
+    expect(res2.status).toEqual(401);
+  });
+});

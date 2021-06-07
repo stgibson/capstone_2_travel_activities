@@ -6,7 +6,6 @@ const { authenticateJWT, ensureLoggedIn } = require("./middleware/auth");
 const authRoutes = require("./routes/auth");
 const activitiesRoutes = require("./routes/activities");
 const plansRoutes = require("./routes/plans");
-const daysRoutes = require("./routes/days");
 
 if (process.env.NODE_ENV !== "test") {
   sequelize.sync({ force: true });
@@ -24,7 +23,6 @@ app.use("/auth", authRoutes);
 app.use(ensureLoggedIn);
 app.use("/activities", activitiesRoutes);
 app.use("/plans", plansRoutes);
-app.use("/days", daysRoutes);
 
 // not found error
 app.use((req, res, next) => {
