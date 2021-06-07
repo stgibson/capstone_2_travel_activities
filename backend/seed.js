@@ -5,7 +5,7 @@ const { City, Country, Activity } = require("./models");
 const seed = async () => {
   try {
     // create test user
-    const user = { username: "testuser", password: "cab" };
+    const user = { username: "testuser", password: "testing" };
     await axios.post(`${process.env.API_BASE_URL}/auth/register`, user);
 
     // create test city and country
