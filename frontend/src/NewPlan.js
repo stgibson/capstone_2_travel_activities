@@ -27,11 +27,11 @@ const NewPlan = () => {
    */
   const handleCreatePlan = data => {
     const { name, numOfDays } = data;
+    history.push("/plans");
     dispatch(addPlanToAPI(
       { name, numOfDays: Number.parseInt(numOfDays) },
       token
     ));
-    history.push("/plans");
   };
 
   return (
