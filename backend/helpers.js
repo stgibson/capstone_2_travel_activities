@@ -26,12 +26,6 @@ const urlEncodeAddress = (address) => {
  * @return coordinates
  */
 const cityCountryToLatLng = async (city, country) => {
-  // for protection for testing
-  if (process.env.NODE_ENV === "test") {
-    throw new Error("Should not call cityCountryToLatLon during automated testing");
-  }
-  throw new Error("Should not call cityCountryToLatLon right now");
-
   const address = urlEncodeAddress(`${city}, ${country}`);
 
   const params = { address, key: process.env.GEOCODING_API_KEY };
@@ -50,12 +44,6 @@ const cityCountryToLatLng = async (city, country) => {
  * @return activities
  */
 const getActivities = async (latitude, longitude) => {
-  // for protection for testing
-  if (process.env.NODE_ENV === "test") {
-    throw new Error("Should not call getActivities during automated testing");
-  }
-  throw new Error("Should not call getActivities right now");
-
   const res = await amadeus.shopping.activities.get({ latitude, longitude });
   return res.data;
 }
