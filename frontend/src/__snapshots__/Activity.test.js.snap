@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Activity"
+    id="1"
+  >
+    <a
+      class="Activity-link"
+      href="/activities/1"
+    >
+      Test Activity
+    </a>
+    <button
+      class="btn btn-primary btn-sm"
+      type="button"
+    >
+      Button Text
+    </button>
+  </div>
+</DocumentFragment>
+`;

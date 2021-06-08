@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <h2>
+    Search for Activities
+  </h2>
+  <form
+    class=""
+  >
+    <div
+      class="form-group"
+    >
+      <label
+        class="form-label"
+        for="city"
+      >
+        City
+      </label>
+      <input
+        class="form-control"
+        id="city"
+        type="text"
+        value="paris"
+      />
+    </div>
+    <div
+      class="form-group"
+    >
+      <label
+        class="form-label"
+        for="country"
+      >
+        Country
+      </label>
+      <input
+        class="form-control"
+        id="country"
+        type="text"
+        value="france"
+      />
+    </div>
+  </form>
+  <button
+    class="btn btn-primary"
+    type="button"
+  >
+    Search
+  </button>
+</DocumentFragment>
+`;

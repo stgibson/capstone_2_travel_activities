@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Day"
+    id="1"
+  >
+    <h3>
+      1
+    </h3>
+    <div>
+      <div
+        class="Activity"
+        id="1"
+      >
+        <a
+          class="Activity-link"
+          href="/activities/1"
+        >
+          Test Activity 1
+        </a>
+        <button
+          class="btn btn-warning btn-sm"
+          type="button"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+    <div>
+      <div
+        class="Activity"
+        id="2"
+      >
+        <a
+          class="Activity-link"
+          href="/activities/2"
+        >
+          Test Activity 2
+        </a>
+        <button
+          class="btn btn-warning btn-sm"
+          type="button"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+    <form
+      class=""
+    >
+      <div
+        class="form-group"
+      >
+        <label
+          class="form-label"
+          for="activity"
+        />
+        <select
+          class="form-control"
+          id="activity"
+        />
+      </div>
+    </form>
+    <button
+      class="btn btn-primary"
+      type="button"
+    >
+      Add Activity
+    </button>
+  </div>
+</DocumentFragment>
+`;

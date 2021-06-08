@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <nav
+      class="navbar navbar-expand navbar-light bg-light"
+      varian="light"
+    >
+      <a
+        class="navbar-brand"
+        href="/"
+      >
+        Travel Activities
+      </a>
+      <div
+        class="ml-auto navbar-nav"
+      >
+        <a
+          class="nav-link"
+          data-rb-event-key="/signup"
+          href="/signup"
+        >
+          Sign Up
+        </a>
+        <a
+          class="nav-link"
+          data-rb-event-key="/login"
+          href="/login"
+        >
+          Log In
+        </a>
+      </div>
+    </nav>
+    <div
+      class="container"
+    >
+      <h2>
+        Log In
+      </h2>
+      <form
+        class=""
+      >
+        <div
+          class="form-group"
+        >
+          <label
+            class="form-label"
+            for="username"
+          >
+            Username:
+          </label>
+          <input
+            class="form-control"
+            id="username"
+            type="text"
+            value="testuser"
+          />
+        </div>
+        <div
+          class="form-group"
+        >
+          <label
+            class="form-label"
+            for="password"
+          >
+            Password
+          </label>
+          <input
+            class="form-control"
+            id="password"
+            type="password"
+            value="testing"
+          />
+        </div>
+      </form>
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        Log In
+      </button>
+      <nav
+        class="navbar navbar-expand navbar-light fixed-bottom"
+      >
+        <small>
+          The information on travel activities in this website is provided by the Tours and Activities API by Amadeus for Developers located at https://developers.amadeus.com/self-service/category/destination-content/api-doc/tours-and-activities/api-reference. Furthermore, this site also uses the Geocoding API located at https://developers.google.com/maps/documentation/geocoding/overview
+        </small>
+      </nav>
+    </div>
+  </div>
+</DocumentFragment>
+`;
