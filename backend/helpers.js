@@ -25,7 +25,7 @@ const urlEncodeAddress = (address) => {
  * @param {string} country 
  * @return coordinates
  */
-const cityCountryToLatLon = async (city, country) => {
+const cityCountryToLatLng = async (city, country) => {
   // for protection for testing
   if (process.env.NODE_ENV === "test") {
     throw new Error("Should not call cityCountryToLatLon during automated testing");
@@ -60,4 +60,4 @@ const getActivities = async (latitude, longitude) => {
   return res.data;
 }
 
-module.exports = { cityCountryToLatLon, getActivities };
+module.exports = { cityCountryToLatLng, getActivities };

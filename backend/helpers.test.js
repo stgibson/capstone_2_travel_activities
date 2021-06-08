@@ -1,12 +1,12 @@
 require("dotenv").config();
 const axios = require("axios");
 const Amadeus = require("amadeus");
-const { cityCountryToLatLon, getActivities } = require("./helpers");
+const { cityCountryToLatLng, getActivities } = require("./helpers");
 
 jest.mock("axios");
 jest.mock("amadeus");
 
-describe("cityCountryToLatLon", () => {
+describe("cityCountryToLatLng", () => {
   it("gets latitude and longitude of city, country", async () => {
     const city = "paris";
     const country = "france";
@@ -36,7 +36,7 @@ describe("cityCountryToLatLon", () => {
       }
     });
 
-    const coordinates = await cityCountryToLatLon(city, country);
+    const coordinates = await cityCountryToLatLng(city, country);
     
     expect(coordinates.lat).toEqual(lat);
     expect(coordinates.lng).toEqual(lng);

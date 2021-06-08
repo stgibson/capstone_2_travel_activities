@@ -4,7 +4,7 @@ const router = express.Router();
 const jsonSchema = require("jsonschema");
 const ExpressError = require("../expressError");
 const { User, City, Country, Activity, UserActivity } = require("../models");
-const { cityCountryToLatLon, getActivities } = require("../helpers");
+const { cityCountryToLatLng, getActivities } = require("../helpers");
 const activityQuerySchema = require("../schemas/activityQuery.json");
 
 /**
@@ -38,7 +38,7 @@ router.get("/", async (req, res, next) => {
     // if needed to create city, get activities from external API
     if (created) {
       // first convert to lat & lon
-      const coordinates = await cityCountryToLatLon(cityName, countryName);
+      const coordinates = await cityCountryToLatLng(cityName, countryName);
       if (!coordinates) {
         throw new ExpressError("Invalid city or country name", 400);
       }
