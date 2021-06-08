@@ -47,4 +47,11 @@ describe("favorite activities reducer", () => {
       { type: RESET_ALL }
     )).toEqual({});
   });
+
+  it("doesn't change state with unrecognized action type", () => {
+    expect(activities(
+      { 1: favoriteActivities[0], 2: favoriteActivities[1] },
+      { type: "ANOTHER_TYPE" }
+    )).toEqual({ 1: favoriteActivities[0], 2: favoriteActivities[1] });
+  });
 });

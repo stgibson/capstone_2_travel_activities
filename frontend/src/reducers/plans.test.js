@@ -99,4 +99,11 @@ describe("travel plans reducer", () => {
       }
     });
   });
+
+  it("doesn't change state with unrecognized action type", () => {
+    expect(plans(
+      { 1: testPlans[0], 2: testPlans[1] },
+      { type: "ANOTHER_TYPE" }
+    )).toEqual({ 1: testPlans[0], 2: testPlans[1] });
+  });
 });
