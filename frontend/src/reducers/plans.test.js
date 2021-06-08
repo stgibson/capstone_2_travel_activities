@@ -19,7 +19,7 @@ const testPlans = [
 ];
 
 describe("travel plans reducer", () => {
-  it("loads plans", async () => {
+  it("loads plans", () => {
     expect(plans(
       {},
       { type: LOAD_PLANS, plans: testPlans }
@@ -36,7 +36,7 @@ describe("travel plans reducer", () => {
     });
   });
 
-  it("adds plan", async () => {
+  it("adds plan", () => {
     expect(plans(
       {},
       { type: ADD_PLAN, plan: testPlans[0] }
@@ -47,7 +47,7 @@ describe("travel plans reducer", () => {
     )).toEqual({ 1: testPlans[0], 2: testPlans[1] });
   });
 
-  it("adds activity to plan", async () => {
+  it("adds activity to plan", () => {
     const newActivity = { id: 3, name: "Test Activity 3" };
 
     expect(plans(
@@ -65,7 +65,7 @@ describe("travel plans reducer", () => {
     });
   });
 
-  it("removes activity to plan", async () => {
+  it("removes activity to plan", () => {
     expect(plans(
       { 1: testPlans[0] },
       {

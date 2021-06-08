@@ -12,14 +12,14 @@ const favoriteActivities = [
 ];
 
 describe("favorite activities reducer", () => {
-  it("loads favorite activities", async () => {
+  it("loads favorite activities", () => {
     expect(activities(
       {},
       { type: LOAD_FAVORITE_ACTIVITIES, activities: favoriteActivities }
     )).toEqual({ 1: favoriteActivities[0], 2: favoriteActivities[1] });
   });
 
-  it("adds favorite activity", async () => {
+  it("adds favorite activity", () => {
     expect(activities(
       {},
       { type: ADD_FAVORITE_ACTIVITY, activity: favoriteActivities[0] }
@@ -30,7 +30,7 @@ describe("favorite activities reducer", () => {
     )).toEqual({ 1: favoriteActivities[0], 2: favoriteActivities[1] });
   });
 
-  it("removes favorite activity", async () => {
+  it("removes favorite activity", () => {
     expect(activities(
       { 1: favoriteActivities[0], 2: favoriteActivities[1] },
       { type: REMOVE_FAVORITE_ACTIVITY, id: 2 }
@@ -41,7 +41,7 @@ describe("favorite activities reducer", () => {
     )).toEqual({});
   });
 
-  it("resets activities", async () => {
+  it("resets activities", () => {
     expect(activities(
       { 1: favoriteActivities[0], 2: favoriteActivities[1] },
       { type: RESET_ALL }
