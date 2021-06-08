@@ -3,20 +3,11 @@ import axios from "axios";
 import {
   LOAD_FAVORITE_ACTIVITIES,
   ADD_FAVORITE_ACTIVITY,
-  REMOVE_FAVORITE_ACTIVITY,
-  SHOW_ERR
+  REMOVE_FAVORITE_ACTIVITY
 } from "../actionTypes";
+import { showErr } from "./errors";
 
 dotenv.config();
-
-/**
- * Creates action to add errors to redux store
- * @param {string} msg 
- * @returns action
- */
-const showErr = msg => {
-  return { type: SHOW_ERR, msg };
-};
 
 /**
  * Creates action to load activities to redux store

@@ -4,21 +4,12 @@ import {
   LOAD_PLANS,
   ADD_PLAN,
   ADD_ACTIVITY_TO_PLAN,
-  REMOVE_ACTIVITY_FROM_PLAN,
-  SHOW_ERR
+  REMOVE_ACTIVITY_FROM_PLAN
 } from "../actionTypes";
 import { getDaysInPlanFromAPI } from "./helpers";
+import { showErr } from "./errors";
 
 dotenv.config();
-
-/**
- * Creates action to add errors to redux store
- * @param {string} msg 
- * @returns action
- */
-const showErr = msg => {
-  return { type: SHOW_ERR, msg };
-};
 
 /**
  * Creates action to load plans to redux store
