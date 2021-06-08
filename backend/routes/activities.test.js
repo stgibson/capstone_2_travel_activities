@@ -22,7 +22,7 @@ beforeEach(async () => {
   activityId = activity.id;
 
   const res = await request(app).post("/auth/register")
-    .send({ username: "test", password: "password" });
+    .send({ username: "testuser", password: "password" });
   token = res.body.token;
 });
 

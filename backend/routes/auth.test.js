@@ -6,7 +6,7 @@ const { sequelize } = require("../models");
 beforeEach(async () => {
   await sequelize.sync({ force: true });
   await request(app).post("/auth/register")
-    .send({ username: "test1", password: "password" });
+    .send({ username: "testuser1", password: "password" });
 });
 
 afterAll(async () => {
@@ -15,19 +15,19 @@ afterAll(async () => {
 
 describe("POST /auth/register", () => {
   it("can register", async () => {
-    const data = { username: "test2", password: "password" };
+    const data = { username: "testuser2", password: "password" };
     const res = await request(app).post("/auth/register").send(data);
     const token = res.body.token;
     
     expect(res.status).toEqual(201);
     expect(jwt.decode(token)).toEqual({
-      username: "test2",
+      username: "testuser2",
       iat: expect.any(Number)
     });
   });
 
   it("fails to register with username that already exists", async () => {
-    const data = { username: "test1", password: "password" };
+    const data = { username: "testuser1", password: "password" };
     const res = await request(app).post("/auth/register").send(data);
 
     expect(res.status).toEqual(400);
@@ -36,13 +36,13 @@ describe("POST /auth/register", () => {
 
 describe("POST /auth/login", () => {
   it("can login", async () => {
-    const data = { username: "test1", password: "password" };
+    const data = { username: "testuser1", password: "password" };
     const res = await request(app).post("/auth/login").send(data);
     const token = res.body.token;
     
     expect(res.status).toEqual(200);
     expect(jwt.decode(token)).toEqual({
-      username: "test1",
+      username: "testuser1",
       iat: expect.any(Number)
     });
   });
@@ -53,7 +53,7 @@ describe("POST /auth/login", () => {
     
     expect(res.status).toEqual(400);
 
-    data = { username: "test1", password: "wrong" }
+    data = { username: "testuser1", password: "wrong" }
     res = await request(app).post("/auth/login").send(data);
     
     expect(res.status).toEqual(400);

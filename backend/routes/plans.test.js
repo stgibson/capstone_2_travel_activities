@@ -23,10 +23,10 @@ beforeEach(async () => {
   activityId = activity.id;
 
   const res1 = await request(app).post("/auth/register")
-    .send({ username: "test1", password: "password" });
+    .send({ username: "testuser1", password: "password" });
   token1 = res1.body.token;
   const res2 = await request(app).post("/auth/register")
-    .send({ username: "test2", password: "password" });
+    .send({ username: "testuser2", password: "password" });
   token2 = res2.body.token;
 });
 
@@ -44,7 +44,7 @@ describe("POST /plans", () => {
     expect(res.status).toEqual(201);
     expect(plan.id).not.toBeNull();
     expect(plan.name).toEqual("Test Plan");
-    expect(plan.username).toEqual("test1");
+    expect(plan.username).toEqual("testuser1");
   });
 
   it("fails to create a new travel plan if not logged in", async () => {
