@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "test") {
     }
   );
 }
-else {
+else if (process.env.NODE_ENV === "development") {
   sequelize = new Sequelize(
     "travel_activities",
     "postgres",
@@ -23,6 +23,9 @@ else {
       dialect: "postgres"
     }
   );
+}
+else {
+  sequelize = new Sequelize(process.env.DATABASE_URL);
 }
 
 // set up user model
