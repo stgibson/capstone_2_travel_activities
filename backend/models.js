@@ -1,7 +1,8 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 let sequelize;
-if (process.env.NODE_ENV === "test") {
+const environment = process.env.NODE_ENV || "development";
+if (environment === "test") {
   sequelize = new Sequelize(
     "travel_activities_test",
     "postgres",
@@ -13,7 +14,7 @@ if (process.env.NODE_ENV === "test") {
     }
   );
 }
-else if (process.env.NODE_ENV === "development") {
+else if (environment === "development") {
   sequelize = new Sequelize(
     "travel_activities",
     "postgres",
@@ -25,7 +26,7 @@ else if (process.env.NODE_ENV === "development") {
   );
 }
 else {
-  sequelize = new Sequelize(process.env.DATABASE_URL);
+  sequelize = new Sequelize(process.env.DATABASE_URL, { dialect: "postgres" });
 }
 
 // set up user model

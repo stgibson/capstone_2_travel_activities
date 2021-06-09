@@ -8,7 +8,7 @@ const activitiesRoutes = require("./routes/activities");
 const plansRoutes = require("./routes/plans");
 
 if (process.env.NODE_ENV !== "test") {
-  sequelize.sync({ force: true });
+  sequelize.sync();
 }
 
 const app = express();
