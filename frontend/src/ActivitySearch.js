@@ -9,8 +9,8 @@ import BaseForm from "./BaseForm";
 const ActivitySearch = ({ searchActivities }) => {
   // remove defaults for production
   const inputs = [
-    { name: "city", label: "City", type: "text", default: "paris" },
-    { name: "country", label: "Country", type: "text", default: "france" }
+    { name: "city", label: "City", type: "text", default: "" },
+    { name: "country", label: "Country", type: "text", default: "" }
   ];
 
   return (

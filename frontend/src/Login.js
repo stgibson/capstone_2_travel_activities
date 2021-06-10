@@ -13,13 +13,13 @@ const Login = ({ login }) => {
       name: "username",
       label: "Username:",
       type: "text",
-      default: "testuser"
+      default: ""
     },
     {
       name: "password",
       label: "Password",
       type: "password",
-      default: "testing"
+      default: ""
     }
   ]
 
