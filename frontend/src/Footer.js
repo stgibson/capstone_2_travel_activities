@@ -8,7 +8,7 @@ import Navbar from "react-bootstrap/Navbar";
  */
 const Footer = () => {
   return (
-    <Navbar fixed="bottom">
+    <Navbar bg="light" fixed="bottom">
       <small>
         The information on travel activities in this website is provided by the
         Tours and Activities API by Amadeus for Developers located at

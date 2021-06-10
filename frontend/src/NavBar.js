@@ -12,7 +12,7 @@ const NavBar = ({ logout }) => {
   const token = useSelector(store => store.token);
 
   return (
-    <Navbar bg="light" varian="light">
+    <Navbar bg="light" variant="light">
       <Navbar.Brand href="/">Travel Activities</Navbar.Brand>
       {
         token ? (
