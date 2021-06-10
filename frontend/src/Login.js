@@ -1,5 +1,6 @@
 import React from "react";
 import BaseForm from "./BaseForm";
+import Footer from "./Footer";
 
 /**
  * Component for displaying form to log in
@@ -24,12 +25,15 @@ const Login = ({ login }) => {
   ]
 
   return (
-    <BaseForm
-      title="Log In"
-      inputs={ inputs }
-      btnText="Log In"
-      submitCallback={ login }
-    />
+    <>
+      <BaseForm
+        title="Log In"
+        inputs={ inputs }
+        btnText="Log In"
+        submitCallback={ login }
+      />
+      <Footer />
+    </>
   );
 };
 

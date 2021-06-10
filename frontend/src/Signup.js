@@ -1,5 +1,6 @@
 import React from "react";
 import BaseForm from "./BaseForm";
+import Footer from "./Footer";
 
 /**
  * Component for displaying form to create an account
@@ -13,12 +14,15 @@ const Signup = ({ signup }) => {
   ]
 
   return (
-    <BaseForm
-      title="Sign Up"
-      inputs={ inputs }
-      btnText="Sign Up"
-      submitCallback={ signup }
-    />
+    <>
+      <BaseForm
+        title="Sign Up"
+        inputs={ inputs }
+        btnText="Sign Up"
+        submitCallback={ signup }
+      />
+      <Footer />
+    </>
   );
 };
 
