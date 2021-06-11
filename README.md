@@ -51,6 +51,33 @@ run tests for the back end, run `nmp i` and then `npm test` in the backend/
 directory. In order to run tests for the front end, run `npm i` and then
 `npm test` in the frontend/ directory.
 
+## User Flow
+01234567890123456789012345678901234567890123456789012345678901234567890123456789
+If the user is visiting the website for the first time, the user must first
+create an account by entering a username and a password. If the user already has
+an account, the user must log in using the same username and password the user
+used to create an account. The user may search for a list of activities by
+entering a city and its country in a form on the Home Page. If there are no
+known activities in the user's input, a message will be displayed letting the
+user know this. Otherwise, a list of activities by name will be displayed on the
+page. The user may navigate to a page showing details on an activity by clicking
+on the activity's name. The user can view details on the activity, and the user
+may choose to add it to their list of favorite activities. The user may also
+click on a link in the navigation bar to see the user's list of favorite
+activities. On the favorite activities page, the user may choose to remove an
+activity from the user's list. The user can also use the navigation bar to
+navigate to a page to create a travel plan. The user creates a travel plan by
+entering the name of the travel plan and the number of days in the travel plan
+to a form, and then submitting the form. The user will then be redirected to a
+page showing a list of the user's travel plans. The user can use the navigation
+bar to return to this page any time the user is logged in. The user can click on
+a travel plan on this page to navigate to a list of the days in the travel plan,
+with each day containing a dropdown menu to select an activity from the user's
+favorite activities list to add to the day. Each activity in each day is
+displayed with a button the user can click to remove the activity from the day
+in the travel plan. The user can also use the navigation bar at any time to
+return back to the home page or to log out when the user is done for the day.
+
 ## API Links
 [Amadeus for Developers: Tours and Activities](https://developers.amadeus.com/self-service/category/destination-content/api-doc/tours-and-activities/api-reference)
 
@@ -81,3 +108,6 @@ This API requires an API key as well.
 * JSON Web Token
 * Sequelize
 * SuperTest
+* Heroku
+* Surge
+* Git/GitHub
