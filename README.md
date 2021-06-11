@@ -52,7 +52,6 @@ directory. In order to run tests for the front end, run `npm i` and then
 `npm test` in the frontend/ directory.
 
 ## User Flow
-01234567890123456789012345678901234567890123456789012345678901234567890123456789
 If the user is visiting the website for the first time, the user must first
 create an account by entering a username and a password. If the user already has
 an account, the user must log in using the same username and password the user
