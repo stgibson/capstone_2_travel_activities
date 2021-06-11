@@ -69,15 +69,15 @@ This API requires an API key as well.
 
 ## Technology Stack
 
-Node.js
-Express.js
-PostgreSQL
-React
-React Bootstrap
-Redux
-Axios
-Bcrypt
-JSON Schema
-JSON Web Token
-Sequelize
-SuperTest
+* Node.js
+* Express.js
+* PostgreSQL
+* React
+* React Bootstrap
+* Redux
+* Axios
+* Bcrypt
+* JSON Schema
+* JSON Web Token
+* Sequelize
+* SuperTest
