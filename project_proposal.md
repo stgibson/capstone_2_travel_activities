@@ -3,9 +3,9 @@
 ## Goal
 
 The goal of this project is to create a website that allows users to find
-acitivies they can plan to do on a trip to a specific country or city and create
-a travel plan for their trip. The website will be back-end focused and use
-React, Redux, Node, Express, and PostgreSQL.
+activities they can plan to do on a trip to a specific country or city and
+create a travel plan for their trip. The website will be back-end focused and
+use React, Redux, Node, Express, and PostgreSQL.
 
 ## Demographics
 
@@ -79,8 +79,8 @@ activity's name. The user can view details on the activity, and the user may
 choose to add it to their list of favorite activities. The user may also click
 on a link in the navigation bar to see the user's list of favorite activities.
 On the favorite activities page, the user may choose to remove an activity from
-the user's list. The user can also use the navigation bar at any time to return back to the
-home page or to log out when the user is done for the day.
+the user's list. The user can also use the navigation bar at any time to return
+back to the home page or to log out when the user is done for the day.
 
 ### Backlog
 
